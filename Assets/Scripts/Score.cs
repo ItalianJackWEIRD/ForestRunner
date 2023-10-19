@@ -13,6 +13,11 @@ public class Score : MonoBehaviour
         ScoreInt++;
     }
 
+    public void ScorePlusFive() 
+    { 
+        ScoreInt = ScoreInt + 5;
+    }
+
     private void Update()
     {
         ScoreText.text = ScoreInt.ToString();
