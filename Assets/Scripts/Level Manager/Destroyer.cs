@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Destroyer : MonoBehaviour
 {
+    public int secondsToWait;
 
-    public string parentName;
+    private string parentName;
 
  
     void Update()
@@ -27,8 +28,8 @@ public class Destroyer : MonoBehaviour
 
     IEnumerator DestroyClone()
     {
-        yield return new WaitForSeconds(10);
-        if (parentName == "Tile 1(Clone)" || parentName == "Tile 2(Clone)" || parentName == "Tile 3(Clone)") 
+        yield return new WaitForSeconds(secondsToWait);
+        if (parentName == "Tile 1(Clone)" || parentName == "Tile 2(Clone)" || parentName == "Tile 3(Clone)" || parentName == "Tile(Clone)") 
         {
             Destroy(gameObject);
         }

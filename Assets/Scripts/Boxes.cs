@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Boxes : MonoBehaviour
 {
+    public GameObject destroyedVersion;
     [SerializeField] private Animator myAnimationController;
     private Score ScoreText;
 
@@ -19,7 +20,7 @@ public class Boxes : MonoBehaviour
     {
         ScoreText.ScorePlusFive();
         myAnimationController.SetBool("crashBool", true);
-        Destroy(gameObject);//box
-        
+        Instantiate(destroyedVersion, transform.position, transform.rotation);
+        Destroy(gameObject);//box        
     }
 }

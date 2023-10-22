@@ -13,7 +13,8 @@ public class Movement : MonoBehaviour
     private bool up = false;
 
     public float jumpVelocity;
-
+    public float cameraTurn;
+ 
     public Material[] mat_sky;
 
     private void Start()
@@ -24,21 +25,28 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        if(Lane3 == true && Player.position.z < 1.1f)
+
+        //SWIPE
+
+        if (Lane3 == true && Player.position.z < 1.1f)
         {
             Player.position += new Vector3(0, 0, 10.5f * Time.deltaTime);
+            GameObject.Find("Main Camera").transform.position += new Vector3(0, 0, cameraTurn * Time.deltaTime);
         }
         else if(Lane1 == true && Player.position.z > -1.1f)
         {
             Player.position += new Vector3(0, 0, -10.5f * Time.deltaTime);
+            GameObject.Find("Main Camera").transform.position += new Vector3(0, 0, -cameraTurn * Time.deltaTime);
         }
         else if(Lane2 == true && Player.position.z <= -0.1f)
         {
             Player.position += new Vector3(0, 0, 10.5f * Time.deltaTime);
+            GameObject.Find("Main Camera").transform.position += new Vector3(0, 0, cameraTurn * Time.deltaTime);
         }
         else if(Lane2 == true && Player.position.z >= 0.1f)
         {
             Player.position += new Vector3(0, 0, -10.5f * Time.deltaTime);
+            GameObject.Find("Main Camera").transform.position += new Vector3(0, 0, -cameraTurn * Time.deltaTime);
         }
 
 
