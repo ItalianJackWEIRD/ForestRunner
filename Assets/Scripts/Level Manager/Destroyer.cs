@@ -29,7 +29,7 @@ public class Destroyer : MonoBehaviour
     IEnumerator DestroyClone()
     {
         yield return new WaitForSeconds(secondsToWait);
-        if (parentName == "Tile 1(Clone)" || parentName == "Tile 2(Clone)" || parentName == "Tile 3(Clone)" || parentName == "Tile(Clone)") 
+        if (parentName == "Tile 1(Clone)" || parentName == "Tile 2(Clone)" || parentName == "Tile 3(Clone)" || parentName == "Tile(Clone)" || parentName == "TileNEW(Clone)") 
         {
             Destroy(gameObject);
         }

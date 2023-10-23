@@ -5344,7 +5344,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
-  Tile1: {fileID: 5371388168229630973, guid: 51a39633887958f47a49eab5559b6dfc, type: 3}
+  random: 1
+  Tile1: {fileID: 5371388168229630973, guid: acdfcb39c8d2da642b89aff4d5ffccfe, type: 3}
   Tile2: {fileID: 5371388168229630973, guid: a1d66ac4e7d957847b8db6eac3c7ac0a, type: 3}
   Tile3: {fileID: 5371388168229630973, guid: affa5cd4461c74d44ae6b2f371d74782, type: 3}
   StartTile: {fileID: 5371388168229630973, guid: 4369e32d29691fa4bb3f8f0376250c3d,

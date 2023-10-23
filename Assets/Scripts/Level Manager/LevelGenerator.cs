@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     public float moveSpeed;
+    public int random;
 
     public GameObject Tile1;
     public GameObject Tile2;
@@ -38,7 +39,7 @@ public class LevelGenerator : MonoBehaviour
 
         if(transform.position.x >= Index)
         {
-            int RandomInt1 = Random.Range(0, 3);
+            int RandomInt1 = Random.Range(0, random);
 
             if(RandomInt1 == 0)
             {
@@ -56,7 +57,7 @@ public class LevelGenerator : MonoBehaviour
                 TempTile1.transform.position = new Vector3(-24, 0, 0);
             }
 
-            int RandomInt2 = Random.Range(0, 3);
+            int RandomInt2 = Random.Range(0, random);
 
             if(RandomInt2 == 0)
             {
@@ -74,7 +75,7 @@ public class LevelGenerator : MonoBehaviour
                 TempTile2.transform.position = new Vector3(-32, 0, 0);
             }
 
-            int RandomInt3 = Random.Range(0, 3);
+            int RandomInt3 = Random.Range(0, random);
 
             if (RandomInt3 == 0)
             {
