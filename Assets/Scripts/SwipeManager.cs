@@ -6,8 +6,16 @@ public class SwipeManager : MonoBehaviour
 {
     public static bool tap, swipeLeft, swipeRight, swipeUp, swipeDown;
     private bool isDraging = false;
+
     private Vector2 startTouch, swipeDelta;
     public int deadZone;
+
+    private Animator animator;
+
+        private void Start()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
 
     private void Update()
     {
@@ -79,11 +87,22 @@ public class SwipeManager : MonoBehaviour
             Reset();
         }
 
+        if ((Input.GetMouseButtonDown(0)) && (
+            
+            swipeDelta.magnitude < deadZone))
+        {
+            PlayerAttack();
+        }
     }
 
     private void Reset()
     {
         startTouch = swipeDelta = Vector2.zero;
         isDraging = false;
+    }
+
+    private void PlayerAttack()
+    {
+        animator.SetTrigger("Attack");
     }
 }
