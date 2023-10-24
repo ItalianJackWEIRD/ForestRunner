@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class Boxes : MonoBehaviour
 {
     [SerializeField] private Animator myAnimationController;
     private Score ScoreText;
+
+    public bool canDestroyBoxes = false;
 
     private void Start()
     {
@@ -17,9 +20,15 @@ public class Boxes : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if(canDestroyBoxes)
+        {
         ScoreText.ScorePlusFive();
         myAnimationController.SetBool("crashBool", true);
         Destroy(gameObject);//box
-        
+        }
+        else
+        {
+            SceneManager.LoadScene("Main");//game over and reload scene
+        }
     }
 }

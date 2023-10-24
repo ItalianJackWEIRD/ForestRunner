@@ -10,6 +10,10 @@ public class SwipeManager : MonoBehaviour
     public float deadZone; // Cambiato il tipo di deadZone a float per un controllo più preciso
     private Animator animator;
 
+    public Boxes boxes; 
+
+    public float timerForDestroyingBoxes = 1;
+
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
@@ -77,7 +81,14 @@ public class SwipeManager : MonoBehaviour
     }
 
     private void PlayerAttack()
-    {
+    {   
         animator.SetTrigger("Attack");
+        boxes.canDestroyBoxes = true;
+        Invoke("ResetCanDestroyBoxes", timerForDestroyingBoxes);
+    }
+
+    private void ResetCanDestroyBoxes()
+    {
+        boxes.canDestroyBoxes = false;
     }
 }

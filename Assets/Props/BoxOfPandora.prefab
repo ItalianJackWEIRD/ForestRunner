@@ -798,6 +798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myAnimationController: {fileID: 7511773440031220602}
+  canDestroyBoxes: 0
 --- !u!1 &7596765140743491376
 GameObject:
   m_ObjectHideFlags: 0
