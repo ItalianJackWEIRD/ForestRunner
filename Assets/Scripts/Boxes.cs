@@ -13,6 +13,8 @@ public class Boxes : MonoBehaviour
 
     public bool canDestroyBoxes = false;
 
+    public GameObject destroyedVersion;
+
     private void Start()
     {
         ScoreText = GameObject.FindGameObjectWithTag("ScoreText").GetComponent<Score>();
@@ -24,6 +26,7 @@ public class Boxes : MonoBehaviour
         {
         ScoreText.ScorePlusFive();
         myAnimationController.SetBool("crashBool", true);
+        Instantiate(destroyedVersion, transform.position, transform.rotation);
         Destroy(gameObject);//box
         }
         else

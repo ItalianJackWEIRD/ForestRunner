@@ -1189,6 +1189,12 @@ PrefabInstance:
       propertyPath: canDestroyBoxes
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1777500096858976370, guid: da3cfffb49708464ba822d4f47a6e282,
+        type: 3}
+      propertyPath: destroyedVersion
+      value: 
+      objectReference: {fileID: 1000014038691284, guid: 6ac7f29423d4aaf429a4a4ac1e9032c6,
+        type: 3}
     - target: {fileID: 7593238126102354392, guid: da3cfffb49708464ba822d4f47a6e282,
         type: 3}
       propertyPath: m_LocalPosition.x
