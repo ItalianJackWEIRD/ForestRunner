@@ -30,22 +30,22 @@ public class Movement : MonoBehaviour
 
         if (Lane3 == true && Player.position.z < 1.1f)
         {
-            Player.position += new Vector3(0, 0, 10.5f * Time.deltaTime);
+            Player.position += new Vector3(0, 0, 12.5f * Time.deltaTime);
             GameObject.Find("Main Camera").transform.position += new Vector3(0, 0, cameraTurn * Time.deltaTime);
         }
         else if(Lane1 == true && Player.position.z > -1.1f)
         {
-            Player.position += new Vector3(0, 0, -10.5f * Time.deltaTime);
+            Player.position += new Vector3(0, 0, -12.5f * Time.deltaTime);
             GameObject.Find("Main Camera").transform.position += new Vector3(0, 0, -cameraTurn * Time.deltaTime);
         }
         else if(Lane2 == true && Player.position.z <= -0.1f)
         {
-            Player.position += new Vector3(0, 0, 10.5f * Time.deltaTime);
+            Player.position += new Vector3(0, 0, 12.5f * Time.deltaTime);
             GameObject.Find("Main Camera").transform.position += new Vector3(0, 0, cameraTurn * Time.deltaTime);
         }
         else if(Lane2 == true && Player.position.z >= 0.1f)
         {
-            Player.position += new Vector3(0, 0, -10.5f * Time.deltaTime);
+            Player.position += new Vector3(0, 0, -12.5f * Time.deltaTime);
             GameObject.Find("Main Camera").transform.position += new Vector3(0, 0, -cameraTurn * Time.deltaTime);
         }
 
