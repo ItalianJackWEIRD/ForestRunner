@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.1052608, g: 0.15382156, b: 0.22497931, a: 1}
+  m_IndirectSpecularColor: {r: 0.088050544, g: 0.1286456, b: 0.18777297, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5796,9 +5796,10 @@ GameObject:
   - component: {fileID: 2101788044}
   - component: {fileID: 2101788049}
   - component: {fileID: 2101788050}
+  - component: {fileID: 2101788051}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5913,9 +5914,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ad5a3b09421d2e48810fbe0ba543dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tap: 0
+  isDraging: 0
+  startTouch: {x: 0, y: 0}
+  swipeDelta: {x: 0, y: 0}
   deadZone: 50
+--- !u!114 &2101788051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101788043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 740d46ad6e4d9b64a81865baed97fff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swipeManager: {fileID: 2101788050}
   boxes: {fileID: 0}
   timerForDestroyingBoxes: 1
+  timerForAttack: 1.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

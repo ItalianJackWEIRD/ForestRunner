@@ -677,6 +677,8 @@ GameObject:
   - component: {fileID: 3042294697652635290}
   - component: {fileID: 1462819226016072972}
   - component: {fileID: 1777500096858976370}
+  - component: {fileID: 3137967358779924644}
+  - component: {fileID: 2647302594381364751}
   m_Layer: 0
   m_Name: BoxOfPandora
   m_TagString: Untagged
@@ -799,6 +801,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myAnimationController: {fileID: 7511773440031220602}
   canDestroyBoxes: 0
+  destroyedVersion: {fileID: 1000014038691284, guid: 6ac7f29423d4aaf429a4a4ac1e9032c6,
+    type: 3}
+--- !u!114 &3137967358779924644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7596765140356242614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 740d46ad6e4d9b64a81865baed97fff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swipeManager: {fileID: 2647302594381364751}
+  boxes: {fileID: 1777500096858976370}
+  timerForDestroyingBoxes: 1
+  timerForAttack: 1.5
+--- !u!114 &2647302594381364751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7596765140356242614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad5a3b09421d2e48810fbe0ba543dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tap: 0
+  isDraging: 0
+  startTouch: {x: 0, y: 0}
+  swipeDelta: {x: 0, y: 0}
+  deadZone: 50
 --- !u!1 &7596765140743491376
 GameObject:
   m_ObjectHideFlags: 0
