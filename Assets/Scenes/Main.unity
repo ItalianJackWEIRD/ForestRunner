@@ -23,10 +23,10 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 1.5
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 1, g: 1, b: 1, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: ceb0a3ed2cb53a94fa21843cc958c52b, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: aa87107d0c3535c4983a4edb2d0e9f7b, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.04621301, g: 0.06769592, b: 0.09666951, a: 1}
+  m_IndirectSpecularColor: {r: 0.0059971046, g: 0.06021873, b: 0.19527188, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5311,7 +5311,7 @@ MonoBehaviour:
   m_curvature: 250
   m_xScale: 0.5
   m_zScale: 0.6
-  m_flatMargin: 10
+  m_flatMargin: 20
   m_horizonWaves: 0
   m_horizonWaveFrequency: 0
 --- !u!1 &1366496882
@@ -5695,11 +5695,10 @@ MonoBehaviour:
   jumpVelocity: 4
   cameraTurn: 7.5
   mat_sky:
-  - {fileID: 2100000, guid: 3930fc89a28b29746bde6a2389a513e0, type: 2}
-  - {fileID: 2100000, guid: 77715b8b6b248994891d3ccad1ad330b, type: 2}
-  - {fileID: 2100000, guid: 617d9be015db68348a623b01ea51a8c5, type: 2}
-  - {fileID: 2100000, guid: ceb0a3ed2cb53a94fa21843cc958c52b, type: 2}
-  - {fileID: 2100000, guid: 169a1b8f06c17c84e8de491f2bfef986, type: 2}
+  - {fileID: 2100000, guid: 6bfab16f387f95e4bb60f866299be241, type: 2}
+  - {fileID: 2100000, guid: d04fa9ef91692c6429efccdf42970c46, type: 2}
+  - {fileID: 2100000, guid: 6abe918ee1229b34f8557fc2a5a39825, type: 2}
+  - {fileID: 2100000, guid: aa87107d0c3535c4983a4edb2d0e9f7b, type: 2}
 --- !u!54 &2101788046
 Rigidbody:
   m_ObjectHideFlags: 0

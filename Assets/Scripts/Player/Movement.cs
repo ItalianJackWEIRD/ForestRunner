@@ -20,7 +20,7 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         Player = GetComponent<Transform>();
-        RenderSettings.skybox=mat_sky[Random.Range(0 , 5)];//create random skybox 1-5
+        RenderSettings.skybox=mat_sky[Random.Range(0 , 4)];//create random skybox 1-5
     }
 
     private void Update()
@@ -101,7 +101,7 @@ public class Movement : MonoBehaviour
         }
 
 
-        RenderSettings.skybox.SetFloat("_Rotation", Time.time * 5.0f); //rotate skybox
+        RenderSettings.skybox.SetFloat("_Rotation", Time.time * 1.0f); //rotate skybox
 
         
         
