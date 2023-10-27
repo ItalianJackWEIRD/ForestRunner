@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,14 +13,37 @@ public class Movement : MonoBehaviour
 
     private bool up = false;
 
-    public float jumpVelocity;
+    /*public float jumpUpVelocity;
+    public float jumpDownVelocity;*/
+
+    [SerializeField] float jumpHeight = 5;
+    [SerializeField] float gravityScale = 5;
+    [SerializeField] Transform groundCheck;
+    [SerializeField] LayerMask ground;
+
+    public float velocity;
+
+    //[SerializeField] float floorHeight = 0.0f;
+    //[SerializeField] Transform feet;
+    //[SerializeField] ContactFilter filter;
+    //public bool isGrounded;
+    //Collider[] results = new Collider[1];
+
+   /* public float jumpForce = 2f;
+
+    public float fallForce = 2.5f;
+
+    public Rigidbody rb;
+
+    private bool isGrounded;*/
 
     public Material[] mat_sky;
 
     private void Start()
     {
         Player = GetComponent<Transform>();
-        RenderSettings.skybox=mat_sky[Random.Range(0 , 5)];//create random skybox 1-5
+        //rb = GetComponent<Rigidbody>();
+        RenderSettings.skybox=mat_sky[UnityEngine.Random.Range(0 , 5)];//create random skybox 1-5
     }
 
     private void Update()
@@ -70,32 +94,58 @@ public class Movement : MonoBehaviour
         }
         #endregion
 
-       
-       
-        if (SwipeManager.swipeUp == true && Player.position.y <= 0f && up ==false)
+
+        /*if(Player.position.y == 0.0f)
         {
-            up = true;
-           
+            velocity = 0;
+        }*/
+        velocity += Physics.gravity.y * gravityScale * Time.deltaTime;
+
+
+        if(SwipeManager.swipeUp && IsGrounded())
+        {
+            velocity = Mathf.Sqrt(jumpHeight * -2 * (Physics.gravity.y * gravityScale));
         }
 
-        if(up == true && Player.position.y <= 1.6f)
+        transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime);
+
+       /* if(SwipeManager.swipeUp == true) {
+        if (rb.velocity.y > 0)
         {
-            Player.position += new Vector3(0, + jumpVelocity * Time.deltaTime  , 0);
+            rb.velocity += Vector3.up * Physics.gravity.y * (jumpForce - 1) * Time.deltaTime;
+        }
+        else if(rb.velocity.y < 0)
+        {
+            rb.velocity += Vector3.up * Physics.gravity.y * (fallForce - 1) * Time.deltaTime;
+        }
+        }*/
+
+        /*  if (SwipeManager.swipeUp == true && Player.position.y <= 0f && up ==false)
+        {
+            up = true;
+        }
+
+        if(up == true && Player.position.y <= 1.5f)
+        {
+
+            Player.position += new Vector3(0, + jumpUpVelocity * Time.deltaTime  , 0);
         }
         else if(Player.position.y > 0f)
         {
            up = false;
-           Player.position += new Vector3(0, -jumpVelocity * Time.deltaTime  , 0);  
+           Player.position += new Vector3(0, -jumpDownVelocity * Time.deltaTime  , 0);  
         }
         else if(Player.position.y < 0f)
         {
            Player.position += new Vector3(0, 0 , 0);  
-        }
-
+        }*/
 
         RenderSettings.skybox.SetFloat("_Rotation", Time.time * 5.0f); //rotate skybox
+    
+    }
 
-        
-        
+    bool IsGrounded()
+    {
+        return Physics.CheckSphere(groundCheck.position, 0.1f, ground);
     }
 }
