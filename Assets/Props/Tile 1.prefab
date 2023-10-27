@@ -120,6 +120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7233996520225180197}
   - component: {fileID: -754592944102361749}
+  - component: {fileID: 7427538744834612568}
   m_Layer: 6
   m_Name: Tile 1
   m_TagString: Untagged
@@ -160,6 +161,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentName: 
+--- !u!65 &7427538744834612568
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5371388168229630973}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10.657968, y: 0.45377886, z: 17.51993}
+  m_Center: {x: -0.049271107, y: -0.7391048, z: 1.5978823}
 --- !u!1 &9137077357716513815
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,8 +235,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.391044, y: 0.6769158, z: 1}
-  m_Center: {x: -0.31854457, y: 0.048457555, z: 1.9065515e-15}
+  m_Size: {x: 1.3671323, y: 0.6846545, z: 0.9216184}
+  m_Center: {x: -0.32609165, y: -0.027672777, z: -0.081241004}
 --- !u!1001 &1154934523372619212
 PrefabInstance:
   m_ObjectHideFlags: 0
