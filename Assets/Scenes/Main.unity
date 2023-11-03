@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.005972964, g: 0.060188606, b: 0.19513457, a: 1}
+  m_IndirectSpecularColor: {r: 0.0059888237, g: 0.06019307, b: 0.19525121, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5723,8 +5723,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2d7eabb1e992134594f6b3107876b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 2.5
-  gravityScale: 3.5
+  jumpHeight: 1.4
+  gravityScale: 1.9
   groundMask:
     serializedVersion: 2
     m_Bits: 64
