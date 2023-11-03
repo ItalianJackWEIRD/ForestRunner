@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7233996520225180197}
   - component: {fileID: 2891415741250097093}
-  m_Layer: 0
+  - component: {fileID: 1994920453231100243}
+  m_Layer: 6
   m_Name: Tile
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,6 +47,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secondsToWait: 15
+--- !u!65 &1994920453231100243
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5371388168229630973}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10.65797, y: 0.4537789, z: 17.51993}
+  m_Center: {x: -0.0492711, y: -0.7391048, z: 1.597882}
 --- !u!1001 &2305900236278285478
 PrefabInstance:
   m_ObjectHideFlags: 0

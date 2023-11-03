@@ -12,10 +12,19 @@ public class Movement : MonoBehaviour
 
     private bool up = false;
 
-    public float jumpVelocity;
+    [SerializeField] float jumpHeight = 5;
+    [SerializeField] float gravityScale = 5;
+    [SerializeField] LayerMask groundMask;
+
     public float cameraTurn;
- 
-    public Material[] mat_sky;
+
+    public float velocity;
+
+    [SerializeField] float floorHeight = 0.5f;
+    [SerializeField] Transform feet;
+    public bool isGrounded;
+
+   public Material[] mat_sky;
 
     private void Start()
     {
@@ -78,28 +87,28 @@ public class Movement : MonoBehaviour
         }
         #endregion
 
-       
-       
-        if (SwipeManager.swipeUp == true && Player.position.y <= 0f && up ==false)
+        velocity += Physics.gravity.y * gravityScale * Time.deltaTime;
+
+        RaycastHit hit;
+
+        if(Physics.Raycast(feet.position, Vector3.down, out hit, floorHeight, groundMask) && velocity < 0)
         {
-            up = true;
-           
+            velocity = 0;
+            Vector3 surface = hit.point + Vector3.up * floorHeight;
+            transform.position = new Vector3(transform.position.x, surface.y, transform.position.z);
+            isGrounded = true;
+        }
+        else 
+        {
+            isGrounded = false;
         }
 
-        if(up == true && Player.position.y <= 1.6f)
+        if(SwipeManager.swipeUp && isGrounded)
         {
-            Player.position += new Vector3(0, + jumpVelocity * Time.deltaTime  , 0);
-        }
-        else if(Player.position.y > 0f)
-        {
-           up = false;
-           Player.position += new Vector3(0, -jumpVelocity * Time.deltaTime  , 0);  
-        }
-        else if(Player.position.y < 0f)
-        {
-           Player.position += new Vector3(0, 0 , 0);  
+            velocity = Mathf.Sqrt(jumpHeight * -2 * (Physics.gravity.y * gravityScale));
         }
 
+        transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime);
 
         RenderSettings.skybox.SetFloat("_Rotation", Time.time * 1.0f); //rotate skybox
 

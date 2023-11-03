@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.0059971046, g: 0.06021873, b: 0.19527188, a: 1}
+  m_IndirectSpecularColor: {r: 0.005972964, g: 0.060188606, b: 0.19513457, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -124,6 +124,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &292681018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 292681019}
+  m_Layer: 6
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &292681019
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292681018}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2101788048}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &606641558
 GameObject:
   m_ObjectHideFlags: 0
@@ -5692,8 +5723,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2d7eabb1e992134594f6b3107876b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpVelocity: 4
+  jumpHeight: 2.5
+  gravityScale: 3.5
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 64
   cameraTurn: 7.5
+  velocity: 0
+  floorHeight: 0.5
+  feet: {fileID: 292681019}
+  isGrounded: 0
   mat_sky:
   - {fileID: 2100000, guid: 6bfab16f387f95e4bb60f866299be241, type: 2}
   - {fileID: 2100000, guid: d04fa9ef91692c6429efccdf42970c46, type: 2}
@@ -5721,7 +5760,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
@@ -5763,6 +5802,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2032505220}
+  - {fileID: 292681019}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &2101788049

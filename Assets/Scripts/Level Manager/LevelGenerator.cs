@@ -29,8 +29,8 @@ public class LevelGenerator : MonoBehaviour
         GameObject StartPlane4 = Instantiate(StartTile, transform);
         StartPlane4.transform.position = new Vector3(-17, 0, 0);
        
-        GameObject StartPlane5 = Instantiate(StartTile, transform);
-        StartPlane5.transform.position = new Vector3(-25, 0, 0);
+        //GameObject StartPlane5 = Instantiate(StartTile, transform);
+        //StartPlane5.transform.position = new Vector3(-25, 0, 0);
     }
 
     private void Update()
@@ -44,7 +44,7 @@ public class LevelGenerator : MonoBehaviour
             if(RandomInt1 == 0)
             {
                 GameObject TempTile1 = Instantiate(Tile1, transform);
-                TempTile1.transform.position = new Vector3(-24, 0, 0);
+                TempTile1.transform.position = new Vector3(-24, -0.25f, 0);
             }
             else if(RandomInt1 == 1)
             {
@@ -62,7 +62,7 @@ public class LevelGenerator : MonoBehaviour
             if(RandomInt2 == 0)
             {
                 GameObject TempTile2 = Instantiate(Tile1, transform);
-                TempTile2.transform.position = new Vector3(-32, 0, 0);
+                TempTile2.transform.position = new Vector3(-32, -0.25f, 0);
             }
             else if(RandomInt2 == 1)
             {
@@ -80,7 +80,7 @@ public class LevelGenerator : MonoBehaviour
             if (RandomInt3 == 0)
             {
                 GameObject TempTile3 = Instantiate(Tile1, transform);
-                TempTile3.transform.position = new Vector3(-40, 0, 0);
+                TempTile3.transform.position = new Vector3(-40, -0.25f, 0);
             }
             else if (RandomInt3 == 1)
             {
