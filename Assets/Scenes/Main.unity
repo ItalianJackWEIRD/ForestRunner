@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.0059888237, g: 0.06019307, b: 0.19525121, a: 1}
+  m_IndirectSpecularColor: {r: 0.005983529, g: 0.06017963, b: 0.19524705, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5318,7 +5318,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.12278779, y: -0.6963643, z: 0.12278779, w: 0.6963643}
-  m_LocalPosition: {x: 4.300001, y: 3.3, z: 0}
+  m_LocalPosition: {x: 4.52, y: 3.42, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5379,7 +5379,7 @@ MonoBehaviour:
   Tile1: {fileID: 5371388168229630973, guid: acdfcb39c8d2da642b89aff4d5ffccfe, type: 3}
   Tile2: {fileID: 5371388168229630973, guid: a1d66ac4e7d957847b8db6eac3c7ac0a, type: 3}
   Tile3: {fileID: 5371388168229630973, guid: affa5cd4461c74d44ae6b2f371d74782, type: 3}
-  StartTile: {fileID: 5371388168229630973, guid: 4369e32d29691fa4bb3f8f0376250c3d,
+  StartTile: {fileID: 5371388168229630973, guid: 1bf7caa20e836f14aa4d9bd80f5d0973,
     type: 3}
 --- !u!4 &1366496884
 Transform:
@@ -5723,7 +5723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2d7eabb1e992134594f6b3107876b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 1.4
+  jumpHeight: 1.6
   gravityScale: 1.9
   groundMask:
     serializedVersion: 2

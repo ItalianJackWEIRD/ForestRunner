@@ -10,7 +10,7 @@ public class Movement : MonoBehaviour
     private bool Lane2 = true;
     private bool Lane3 = false;
 
-    private bool up = false;
+    //private bool up = false;
 
     [SerializeField] float jumpHeight = 5;
     [SerializeField] float gravityScale = 5;
