@@ -10,19 +10,19 @@ public class Boxes : MonoBehaviour
 {
     [SerializeField] private Animator myAnimationController;
     private Score ScoreText;
-
-    public bool canDestroyBoxes = false;
+    private Attack canDestroyBoxes;
 
     public GameObject destroyedVersion;
 
     private void Start()
     {
         ScoreText = GameObject.FindGameObjectWithTag("ScoreText").GetComponent<Score>();
+        canDestroyBoxes = GameObject.FindGameObjectWithTag("Player").GetComponent<Attack>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(canDestroyBoxes)
+        if(canDestroyBoxes.canDestroy())
         {
         ScoreText.ScorePlusFive();
         myAnimationController.SetBool("crashBool", true);
@@ -34,4 +34,6 @@ public class Boxes : MonoBehaviour
             SceneManager.LoadScene("Main");//game over and reload scene
         }
     }
+
+
 }

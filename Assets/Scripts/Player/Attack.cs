@@ -7,11 +7,11 @@ public class Attack : MonoBehaviour
     
     private Animator animator;
     public SwipeManager swipeManager;
-    public Boxes boxes;
 
     private float timerForDestroyingBoxes = 1;
 
     private bool canAttack = true;
+    public bool attacking = false;
 
     private float timerForAttack = 1;
 
@@ -19,7 +19,6 @@ public class Attack : MonoBehaviour
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
-        boxes.canDestroyBoxes = false;
     }
 
     // Update is called once per frame
@@ -47,17 +46,22 @@ public class Attack : MonoBehaviour
         canAttack = false;
         Invoke("ResetCanAttack", timerForAttack);
         animator.SetTrigger("Attack");
-        boxes.canDestroyBoxes = true;
+        attacking = true;
         Invoke("ResetCanDestroyBoxes", timerForDestroyingBoxes);
     }
 
     private void ResetCanDestroyBoxes()
     {
-        boxes.canDestroyBoxes = false;
+        attacking = false;
     }
 
     private void ResetCanAttack()
     {
         canAttack = true;
+    }
+
+    public bool canDestroy ()
+    {
+        return attacking;
     }
 }
