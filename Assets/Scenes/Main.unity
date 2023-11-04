@@ -5959,7 +5959,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swipeManager: {fileID: 2101788050}
+  timerForDestroyingBoxes: 0.8
   attacking: 0
+  timerForAttack: 0.4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -8,12 +8,12 @@ public class Attack : MonoBehaviour
     private Animator animator;
     public SwipeManager swipeManager;
 
-    private float timerForDestroyingBoxes = 1;
+    public float timerForDestroyingBoxes = 1;
 
     private bool canAttack = true;
     public bool attacking = false;
 
-    private float timerForAttack = 1;
+    public float timerForAttack = 1;
 
     // Start is called before the first frame update
     private void Start()
