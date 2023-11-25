@@ -11,7 +11,7 @@ public class Attack : MonoBehaviour
     public float timerForDestroyingBoxes = 1;
 
     private bool canAttack = true;
-    public bool attacking = false;
+    public  bool attacking = false;
 
     public float timerForAttack = 1;
 
@@ -64,4 +64,5 @@ public class Attack : MonoBehaviour
     {
         return attacking;
     }
+
 }

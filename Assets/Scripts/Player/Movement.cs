@@ -5,6 +5,8 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     private Transform Player;
+    private Attack att;
+    private Boxes box;
 
     private bool Lane1 = false;
     private bool Lane2 = true;
@@ -14,15 +16,18 @@ public class Movement : MonoBehaviour
 
     [SerializeField] float jumpHeight = 5;
     [SerializeField] float gravityScale = 5;
+    private float tempGravityScale;
     [SerializeField] LayerMask groundMask;
 
     public float cameraTurn;
-
+    public float downFactor;
     public float velocity;
 
     [SerializeField] float floorHeight = 0.5f;
     [SerializeField] Transform feet;
     public bool isGrounded;
+    public bool comingDown;
+    public bool onTheWater;
 
    public Material[] mat_sky;
 
@@ -30,11 +35,18 @@ public class Movement : MonoBehaviour
     {
         Player = GetComponent<Transform>();
         RenderSettings.skybox=mat_sky[Random.Range(0 , 4)];//create random skybox 1-5
+        att = GameObject.FindGameObjectWithTag("Player").GetComponent<Attack>();
+        box = GameObject.FindGameObjectWithTag("Box").GetComponent<Boxes>();
+        //tempGravityScale = gravityScale;
+        comingDown = false;
     }
 
     private void Update()
     {
-
+        if (isGrounded)
+        {
+            //gravityScale = tempGravityScale;
+        }
         //SWIPE
 
         if (Lane3 == true && Player.position.z < 1.1f)
@@ -87,16 +99,19 @@ public class Movement : MonoBehaviour
         }
         #endregion
 
+        //swipe up
+
         velocity += Physics.gravity.y * gravityScale * Time.deltaTime;
 
         RaycastHit hit;
 
-        if(Physics.Raycast(feet.position, Vector3.down, out hit, floorHeight, groundMask) && velocity < 0)
+        if(Physics.Raycast(feet.position, Vector3.down, out hit, floorHeight, groundMask) && velocity < 0 || (Player.transform.position.y < 0.1f && !onTheWater))
         {
             velocity = 0;
             Vector3 surface = hit.point + Vector3.up * floorHeight;
             transform.position = new Vector3(transform.position.x, surface.y, transform.position.z);
             isGrounded = true;
+            comingDown = false;
         }
         else 
         {
@@ -108,11 +123,45 @@ public class Movement : MonoBehaviour
             velocity = Mathf.Sqrt(jumpHeight * -2 * (Physics.gravity.y * gravityScale));
         }
 
-        transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime);
+        if (!comingDown) //se non sta nello swipe down
+        {
+            transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime);
+        }
+        else    //se sta nello swipe down
+        {
+            transform.Translate(new Vector3(0, - downFactor, 0) * Time.deltaTime);
+        }
+
+
+        //swipe down
+
+        if (SwipeManager.swipeDown)
+        {
+            if (!isGrounded)    //sta nel salto, deve tornare a terra
+            {
+                comingDown = true;
+                Debug.Log("down");
+            }
+            else        //sta per terra deve scivolare
+            {
+                Debug.Log("downGrounded");
+            }
+        }
 
         RenderSettings.skybox.SetFloat("_Rotation", Time.time * 1.0f); //rotate skybox
 
         
         
     }
-}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Tramp" && !att.canDestroy() && !isGrounded)
+        {
+            box.destroyBox();
+            comingDown = false;
+            //gravityScale = tempGravityScale;
+            velocity = Mathf.Sqrt(jumpHeight * -2 * (Physics.gravity.y * gravityScale) * 1.5f);
+        }
+    }
+ }
