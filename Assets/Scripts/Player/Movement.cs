@@ -43,11 +43,14 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        if (isGrounded)
-        {
-            //gravityScale = tempGravityScale;
-        }
+        //if (isGrounded)
+        //{
+        //    //gravityScale = tempGravityScale;
+        //}
+        box = GameObject.FindGameObjectWithTag("Box").GetComponent<Boxes>(); box = GameObject.FindGameObjectWithTag("Box").GetComponent<Boxes>();
+
         //SWIPE
+
 
         if (Lane3 == true && Player.position.z < 1.1f)
         {
@@ -154,6 +157,12 @@ public class Movement : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Metodo fa cose
+    /// <br>Bla bla</br>
+    /// <para>altro badjienoaw <see cref="Motion"/></para>
+    /// </summary>
+    /// <param name="other">other sè quessto, rappe</param>
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Tramp" && !att.canDestroy() && !isGrounded)
@@ -162,6 +171,7 @@ public class Movement : MonoBehaviour
             comingDown = false;
             //gravityScale = tempGravityScale;
             velocity = Mathf.Sqrt(jumpHeight * -2 * (Physics.gravity.y * gravityScale) * 1.5f);
+            
         }
     }
  }

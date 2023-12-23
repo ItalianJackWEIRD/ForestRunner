@@ -20,7 +20,10 @@ public class Coin : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        ScoreText.ScorePlusOne();
-        Destroy(gameObject);//coin
+        if (other.tag == "Player")
+        {
+            ScoreText.ScorePlusOne();
+            Destroy(gameObject);//coin
+        }
     }
 }

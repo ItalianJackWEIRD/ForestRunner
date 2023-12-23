@@ -1,5 +1,72 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3118947387209592827
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 168675805486291308}
+  - component: {fileID: 1580454688197441696}
+  - component: {fileID: 859045610503292338}
+  m_Layer: 0
+  m_Name: Attractor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &168675805486291308
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3118947387209592827}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.67012507, y: -0.1437244, z: -0.15270709, w: 0.71200866}
+  m_LocalPosition: {x: -0.00012461485, y: 0.0011421324, z: 0.000040820887}
+  m_LocalScale: {x: 0.021759056, y: 0.02175905, z: 0.021759054}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3931240174871465557}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1580454688197441696
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3118947387209592827}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 5.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &859045610503292338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3118947387209592827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5eda19a460370f4db98b5137c9c8f7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttractorSpeed: 10
 --- !u!1 &3928383042741290259
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,6 +183,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3931268134838207101}
+  - {fileID: 168675805486291308}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -86.529, y: 0, z: 24.21}
 --- !u!114 &8364129492940814880

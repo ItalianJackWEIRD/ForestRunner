@@ -24132,6 +24132,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7233996520225180197}
     m_Modifications:
+    - target: {fileID: 2174756706538733498, guid: da3cfffb49708464ba822d4f47a6e282,
+        type: 3}
+      propertyPath: m_LayerOverridePriority
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7593238126102354392, guid: da3cfffb49708464ba822d4f47a6e282,
         type: 3}
       propertyPath: m_LocalScale.x

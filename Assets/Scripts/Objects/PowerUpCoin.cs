@@ -1,20 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-// Makes objects float up & down while gently spinning.
+
 public class PowerUpCoin : MonoBehaviour
 {
-        // Use this for initialization
-    void Start()
+    private PUManager powerUp;
+
+    private void Start()
     {
-        
-        
+        powerUp = GameObject.FindGameObjectWithTag("Player").GetComponent<PUManager>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        powerUp.Set1();
+        Destroy(gameObject);
     }
 }
