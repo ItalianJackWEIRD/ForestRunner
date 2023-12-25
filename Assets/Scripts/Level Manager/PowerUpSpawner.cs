@@ -20,6 +20,8 @@ public class PowerUpSpawner : MonoBehaviour
             int RandomPower = Random.Range(0, numberOfPowerUps);
             if (RandomPower == 0 )
                 Instantiate(powerUp1, transform);
+            else if(RandomPower == 1 )
+                Instantiate(powerUp2, transform);
 
         }
         

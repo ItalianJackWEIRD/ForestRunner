@@ -9,6 +9,9 @@ TagManager:
   - Ground
   - Box
   - Tramp
+  - ScreenShake
+  - CamFollow
+  - River
   layers:
   - Default
   - TransparentFX

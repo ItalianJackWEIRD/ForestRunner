@@ -15,7 +15,7 @@ public class Coin : MonoBehaviour
 
     private void Update()
     {
-        gameObject.transform.Rotate(0, 0, 3.5f);//rotate coin
+        gameObject.transform.Rotate(0, 0, 4.5f);//rotate coin
     }
 
     private void OnTriggerEnter(Collider other)
