@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour
     private Transform Player;
     private Attack att;
     private Boxes box;
+    private CapsuleCollider collider;
 
     private bool Lane1 = false;
     private bool Lane2 = true;
@@ -39,6 +40,7 @@ public class Movement : MonoBehaviour
         box = GameObject.FindGameObjectWithTag("Box").GetComponent<Boxes>();
         //tempGravityScale = gravityScale;
         comingDown = false;
+        collider = GetComponent<CapsuleCollider>();
     }
 
     private void Update()
@@ -47,7 +49,7 @@ public class Movement : MonoBehaviour
         //{
         //    //gravityScale = tempGravityScale;
         //}
-        box = GameObject.FindGameObjectWithTag("Box").GetComponent<Boxes>(); box = GameObject.FindGameObjectWithTag("Box").GetComponent<Boxes>();
+        box = GameObject.FindGameObjectWithTag("Box").GetComponent<Boxes>();
 
         //SWIPE
 
@@ -148,6 +150,7 @@ public class Movement : MonoBehaviour
             else        //sta per terra deve scivolare
             {
                 Debug.Log("downGrounded");
+                StartCoroutine(Roll());
             }
         }
 
@@ -165,7 +168,7 @@ public class Movement : MonoBehaviour
     /// <param name="other">other sè quessto, rappe</param>
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Tramp" && !att.canDestroy() && !isGrounded)
+        if (other.tag == "Tramp" && !isGrounded)
         {
             box.destroyBox();
             comingDown = false;
@@ -173,5 +176,30 @@ public class Movement : MonoBehaviour
             velocity = Mathf.Sqrt(jumpHeight * -2 * (Physics.gravity.y * gravityScale) * 1.5f);
             
         }
+    }
+
+    public void SetJump (float height, float gravity)
+    {
+        jumpHeight = height;
+        gravityScale = gravity;
+    }
+
+    public void SetJumpNormal()
+    {
+        jumpHeight = 1.65f;
+        gravityScale = 1.6f;
+    }
+
+    IEnumerator Roll()
+    {
+        float y = collider.center.y;
+        float height = collider.height;
+        collider.height = 2.12f;
+        collider.center.Set(collider.center.x, 1.04f, collider.center.z);
+        Debug.Log("Collider Small");
+        yield return new WaitForSecondsRealtime(1.3f);
+        collider.height = height;
+        collider.center.Set(collider.center.x, y, collider.center.z);
+        Debug.Log("Collider Normal");
     }
  }

@@ -12,6 +12,7 @@ TagManager:
   - ScreenShake
   - CamFollow
   - River
+  - DeathBarrier
   layers:
   - Default
   - TransparentFX

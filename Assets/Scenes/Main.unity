@@ -342,7 +342,7 @@ GameObject:
   - component: {fileID: 569556568}
   m_Layer: 0
   m_Name: DeathBarrier
-  m_TagString: Obstacle
+  m_TagString: DeathBarrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5702,12 +5702,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
-  random: 4
+  random: 5
   Tile1: {fileID: 5371388168229630973, guid: c648c221b370ed741aa5c111627dc9cf, type: 3}
   Tile2: {fileID: 5371388168229630973, guid: 3e47fcca51dd56b4a954182624197771, type: 3}
   Tile3: {fileID: 5371388168229630973, guid: 4a463d0838384fe4aa5d6e8c61620434, type: 3}
   Tile4: {fileID: 5371388168229630973, guid: 516ed3efa66ba894382eadab07276714, type: 3}
-  Tile5: {fileID: 0}
+  Tile5: {fileID: 5371388168229630973, guid: 67e4ff93644c67d48a849e469dd2de86, type: 3}
   StartTile1: {fileID: 5371388168229630973, guid: f2b2a1c8dc13acb49b3f5bcb22c7c377,
     type: 3}
   StartTile2: {fileID: 5371388168229630973, guid: 0f7378cf8a4b597438e0bafe18938fdc,

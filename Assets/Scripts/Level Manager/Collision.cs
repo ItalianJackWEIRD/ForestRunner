@@ -27,7 +27,7 @@ public class Collision : MonoBehaviour
                 Destroy(other.gameObject);
             }
         }
-        else if (other.tag == "River")
+        else if (other.tag == "River" || other.tag == "DeathBarrier")
             SceneManager.LoadScene("Main");//game over and reload scene
     }
 }

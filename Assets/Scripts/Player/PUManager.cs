@@ -11,7 +11,14 @@ public class PUManager : MonoBehaviour
     public int PlayerLives;
     private int PlayerLivesTemp;
 
+    private Movement mov;
+
     public int secondsToWait;
+
+    private void Start()
+    {
+        mov = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
+    }
 
     public void Set1()   //setta 1
     {
@@ -70,11 +77,41 @@ public class PUManager : MonoBehaviour
         }
     }
 
+    public bool Get2()
+    {
+        return powerUp2;
+    }
+ 
     IEnumerator Wait2()   //aspetta tot secondi e poi spegne l'effetto di power Up
     {
         yield return new WaitForSecondsRealtime(secondsToWait);
         powerUp2 = false;
         PlayerLives = PlayerLivesTemp;
         Debug.Log("PowerUp2 false");
+    }
+
+    public void Set3()
+    {
+        if (powerUp3)
+        {
+            StopCoroutine(Wait3());
+        }
+        powerUp3 = true;
+        Debug.Log("PowerUp3 true");
+        mov.SetJump(3.5f, 1.85f); 
+        StartCoroutine(Wait3());
+    }
+
+    public bool Get3()
+    {
+        return powerUp3;
+    }
+
+    IEnumerator Wait3()   //aspetta tot secondi e poi spegne l'effetto di power Up
+    {
+        yield return new WaitForSecondsRealtime(secondsToWait);
+        powerUp3 = false;
+        mov.SetJumpNormal();
+        Debug.Log("PowerUp3 false");
     }
 }
