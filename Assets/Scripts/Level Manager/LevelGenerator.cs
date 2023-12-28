@@ -12,6 +12,16 @@ public class LevelGenerator : MonoBehaviour
     public GameObject Tile3;
     public GameObject Tile4;
     public GameObject Tile5;
+    public GameObject Tile6;
+    public GameObject Tile7;
+    public GameObject Tile8;
+    public GameObject Tile9;
+    public GameObject Tile10;
+    public GameObject Tile11;
+    public GameObject Tile12;
+    public GameObject Tile13;
+    public GameObject Tile14;
+    public GameObject Tile15;
     public GameObject StartTile1;
     public GameObject StartTile2;
     public GameObject StartTile3;

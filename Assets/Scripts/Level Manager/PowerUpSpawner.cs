@@ -22,7 +22,8 @@ public class PowerUpSpawner : MonoBehaviour
                 Instantiate(powerUp1, transform);
             else if(RandomPower == 1 )
                 Instantiate(powerUp2, transform);
-
+            else if (RandomPower == 2 )
+                Instantiate(powerUp3, transform);
         }
         
     }
