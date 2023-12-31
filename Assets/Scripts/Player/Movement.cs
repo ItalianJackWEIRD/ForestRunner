@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -8,12 +7,11 @@ public class Movement : MonoBehaviour
     private Attack att;
     private Boxes box;
     private CapsuleCollider collider;
+    private Animator animator;
 
     private bool Lane1 = false;
     private bool Lane2 = true;
     private bool Lane3 = false;
-
-    //private bool up = false;
 
     [SerializeField] float jumpHeight = 5;
     [SerializeField] float gravityScale = 5;
@@ -30,52 +28,43 @@ public class Movement : MonoBehaviour
     public bool comingDown;
     public bool onTheWater;
 
-   public Material[] mat_sky;
+    public Material[] mat_sky;
 
     private void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         Player = GetComponent<Transform>();
-        RenderSettings.skybox=mat_sky[Random.Range(0 , 4)];//create random skybox 1-5
+        RenderSettings.skybox = mat_sky[Random.Range(0, 4)]; // create random skybox 1-5
         att = GameObject.FindGameObjectWithTag("Player").GetComponent<Attack>();
         box = GameObject.FindGameObjectWithTag("Box").GetComponent<Boxes>();
-        //tempGravityScale = gravityScale;
         comingDown = false;
         collider = GetComponent<CapsuleCollider>();
     }
 
     private void Update()
     {
-        //if (isGrounded)
-        //{
-        //    //gravityScale = tempGravityScale;
-        //}
         box = GameObject.FindGameObjectWithTag("Box").GetComponent<Boxes>();
 
-        //SWIPE
+        // SWIPE
 
+        float smoothTime = 0.7f;
 
         if (Lane3 == true && Player.position.z < 1.1f)
         {
-            Player.position += new Vector3(0, 0, 12.5f * Time.deltaTime);
-            GameObject.Find("CamFollow").transform.position += new Vector3(0, 0, cameraTurn * Time.deltaTime);
+            Player.position = Vector3.Lerp(Player.position, new Vector3(Player.position.x, Player.position.y, 1.1f), smoothTime);
         }
-        else if(Lane1 == true && Player.position.z > -1.1f)
+        else if (Lane1 == true && Player.position.z > -1.1f)
         {
-            Player.position += new Vector3(0, 0, -12.5f * Time.deltaTime);
-            GameObject.Find("CamFollow").transform.position += new Vector3(0, 0, -cameraTurn * Time.deltaTime);
+            Player.position = Vector3.Lerp(Player.position, new Vector3(Player.position.x, Player.position.y, -1.1f), smoothTime);
         }
-        else if(Lane2 == true && Player.position.z <= -0.1f)
+        else if (Lane2 == true && Player.position.z <= -0.1f)
         {
-            Player.position += new Vector3(0, 0, 12.5f * Time.deltaTime);
-            GameObject.Find("CamFollow").transform.position += new Vector3(0, 0, cameraTurn * Time.deltaTime);
+            Player.position = Vector3.Lerp(Player.position, new Vector3(Player.position.x, Player.position.y, 0.1f), smoothTime);
         }
-        else if(Lane2 == true && Player.position.z >= 0.1f)
+        else if (Lane2 == true && Player.position.z >= 0.1f)
         {
-            Player.position += new Vector3(0, 0, -12.5f * Time.deltaTime);
-            GameObject.Find("CamFollow").transform.position += new Vector3(0, 0, -cameraTurn * Time.deltaTime);
+            Player.position = Vector3.Lerp(Player.position, new Vector3(Player.position.x, Player.position.y, -0.1f), smoothTime);
         }
-
-
 
         #region ChangeBools
         if (SwipeManager.swipeRight == true && Lane3 == false && Lane1 == true)
@@ -104,13 +93,13 @@ public class Movement : MonoBehaviour
         }
         #endregion
 
-        //swipe up
+        // swipe up
 
         velocity += Physics.gravity.y * gravityScale * Time.deltaTime;
 
         RaycastHit hit;
 
-        if(Physics.Raycast(feet.position, Vector3.down, out hit, floorHeight, groundMask) && velocity < 0 || (Player.transform.position.y < 0.1f && !onTheWater))
+        if (Physics.Raycast(feet.position, Vector3.down, out hit, floorHeight, groundMask) && velocity < 0 || (Player.transform.position.y < 0.1f && !onTheWater))
         {
             velocity = 0;
             Vector3 surface = hit.point + Vector3.up * floorHeight;
@@ -118,12 +107,12 @@ public class Movement : MonoBehaviour
             isGrounded = true;
             comingDown = false;
         }
-        else 
+        else
         {
             isGrounded = false;
         }
 
-        if(SwipeManager.swipeUp && isGrounded)
+        if (SwipeManager.swipeUp && isGrounded)
         {
             velocity = Mathf.Sqrt(jumpHeight * -2 * (Physics.gravity.y * gravityScale));
         }
@@ -132,53 +121,48 @@ public class Movement : MonoBehaviour
         {
             transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime);
         }
-        else    //se sta nello swipe down
+        else //se sta nello swipe down
         {
-            transform.Translate(new Vector3(0, - downFactor, 0) * Time.deltaTime);
+            transform.Translate(new Vector3(0, -downFactor, 0) * Time.deltaTime);
         }
 
-
-        //swipe down
+        // swipe down
 
         if (SwipeManager.swipeDown)
         {
-            if (!isGrounded)    //sta nel salto, deve tornare a terra
+            if (!isGrounded) //sta nel salto, deve tornare a terra
             {
                 comingDown = true;
                 Debug.Log("down");
             }
-            else        //sta per terra deve scivolare
+            else //sta per terra deve scivolare
             {
+                PlayerSlide();
                 Debug.Log("downGrounded");
                 StartCoroutine(Roll());
             }
         }
 
         RenderSettings.skybox.SetFloat("_Rotation", Time.time * 1.0f); //rotate skybox
-
-        
-        
     }
 
-    /// <summary>
-    /// Metodo fa cose
-    /// <br>Bla bla</br>
-    /// <para>altro badjienoaw <see cref="Motion"/></para>
-    /// </summary>
-    /// <param name="other">other sè quessto, rappe</param>
+    private void PlayerSlide()
+    {
+        Debug.Log("Player sliding!");
+        animator.SetTrigger("Slide");
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Tramp" && !isGrounded)
         {
             box.destroyBox();
             comingDown = false;
-            //gravityScale = tempGravityScale;
             velocity = Mathf.Sqrt(jumpHeight * -2 * (Physics.gravity.y * gravityScale) * 1.5f);
-            
         }
     }
 
-    public void SetJump (float height, float gravity)
+    public void SetJump(float height, float gravity)
     {
         jumpHeight = height;
         gravityScale = gravity;
@@ -202,4 +186,4 @@ public class Movement : MonoBehaviour
         collider.center.Set(collider.center.x, y, collider.center.z);
         Debug.Log("Collider Normal");
     }
- }
+}
