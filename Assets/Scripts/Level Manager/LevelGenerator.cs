@@ -22,6 +22,16 @@ public class LevelGenerator : MonoBehaviour
     public GameObject Tile13;
     public GameObject Tile14;
     public GameObject Tile15;
+    public GameObject Tile16;
+    public GameObject Tile17;
+    public GameObject Tile18;
+    public GameObject Tile19;
+    public GameObject Tile20;
+    public GameObject Tile21;
+    public GameObject Tile22;
+    public GameObject Tile23;
+    public GameObject Tile24;
+    public GameObject Tile25;
     public GameObject StartTile1;
     public GameObject StartTile2;
     public GameObject StartTile3;
@@ -91,6 +101,26 @@ public class LevelGenerator : MonoBehaviour
                 GameObject TempTile1 = Instantiate(Tile5, transform);
                 TempTile1.transform.position = new Vector3(-40, -0.25f, 0);
             }
+            else if(RandomInt1 == 5)
+            {
+                GameObject TempTile1 = Instantiate(Tile6, transform);
+                TempTile1.transform.position = new Vector3(-40, -0.25f, 0);
+            }
+            else if (RandomInt1 == 6)
+            {
+                GameObject TempTile1 = Instantiate(Tile7, transform);
+                TempTile1.transform.position = new Vector3(-40, -0.25f, 0);
+            }
+            else if (RandomInt1 == 7)
+            {
+                GameObject TempTile1 = Instantiate(Tile8, transform);
+                TempTile1.transform.position = new Vector3(-40, -0.25f, 0);
+            }
+            else if (RandomInt1 == 8)
+            {
+                GameObject TempTile1 = Instantiate(Tile9, transform);
+                TempTile1.transform.position = new Vector3(-40, -0.25f, 0);
+            }
 
 
             int RandomInt2 = Random.Range(0, random);
@@ -124,6 +154,26 @@ public class LevelGenerator : MonoBehaviour
                 GameObject TempTile2 = Instantiate(Tile5, transform);
                 TempTile2.transform.position = new Vector3(-48, -0.25f, 0);
             }
+            else if (RandomInt2 == 5)
+            {
+                GameObject TempTile2 = Instantiate(Tile6, transform);
+                TempTile2.transform.position = new Vector3(-48, -0.25f, 0);
+            }
+            else if (RandomInt2 == 6)
+            {
+                GameObject TempTile2 = Instantiate(Tile7, transform);
+                TempTile2.transform.position = new Vector3(-48, -0.25f, 0);
+            }
+            else if (RandomInt2 == 7)
+            {
+                GameObject TempTile2 = Instantiate(Tile8, transform);
+                TempTile2.transform.position = new Vector3(-48, -0.25f, 0);
+            }
+            else if (RandomInt2 == 8)
+            {
+                GameObject TempTile2 = Instantiate(Tile9, transform);
+                TempTile2.transform.position = new Vector3(-48, -0.25f, 0);
+            }
 
             int RandomInt3 = Random.Range(0, random);
             while (RandomInt3 == RandomInt2)
@@ -155,6 +205,26 @@ public class LevelGenerator : MonoBehaviour
             else if (RandomInt3 == 4)
             {
                 GameObject TempTile3 = Instantiate(Tile5, transform);
+                TempTile3.transform.position = new Vector3(-56, -0.25f, 0);
+            }
+            else if (RandomInt3 == 5)
+            {
+                GameObject TempTile3 = Instantiate(Tile6, transform);
+                TempTile3.transform.position = new Vector3(-56, -0.25f, 0);
+            }
+            else if (RandomInt3 == 6)
+            {
+                GameObject TempTile3 = Instantiate(Tile7, transform);
+                TempTile3.transform.position = new Vector3(-56, -0.25f, 0);
+            }
+            else if (RandomInt3 == 7)
+            {
+                GameObject TempTile3 = Instantiate(Tile8, transform);
+                TempTile3.transform.position = new Vector3(-56, -0.25f, 0);
+            }
+            else if (RandomInt3 == 8)
+            {
+                GameObject TempTile3 = Instantiate(Tile9, transform);
                 TempTile3.transform.position = new Vector3(-56, -0.25f, 0);
             }
 

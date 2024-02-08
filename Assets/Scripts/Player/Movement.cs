@@ -37,7 +37,7 @@ public class Movement : MonoBehaviour
         Player = GetComponent<Transform>();
         RenderSettings.skybox=mat_sky[Random.Range(0 , 4)];//create random skybox 1-5
         att = GameObject.FindGameObjectWithTag("Player").GetComponent<Attack>();
-        box = GameObject.FindGameObjectWithTag("Box").GetComponent<Boxes>();
+        //box = GameObject.FindGameObjectWithTag("Box").GetComponent<Boxes>();
         //tempGravityScale = gravityScale;
         comingDown = false;
         collider = GetComponent<CapsuleCollider>();
@@ -49,7 +49,12 @@ public class Movement : MonoBehaviour
         //{
         //    //gravityScale = tempGravityScale;
         //}
-        box = GameObject.FindGameObjectWithTag("Box").GetComponent<Boxes>();
+        GameObject check = GameObject.FindGameObjectWithTag("Box");
+        if (check != null )
+        {
+            box = GameObject.FindGameObjectWithTag("Box").GetComponent<Boxes>();
+        }
+       
 
         //SWIPE
 
@@ -175,6 +180,13 @@ public class Movement : MonoBehaviour
             //gravityScale = tempGravityScale;
             velocity = Mathf.Sqrt(jumpHeight * -2 * (Physics.gravity.y * gravityScale) * 1.5f);
             
+        }
+        if (other.tag == "Tramp+" && !isGrounded)
+        {
+            comingDown = false;
+            //gravityScale = tempGravityScale;
+            velocity = Mathf.Sqrt(jumpHeight * -2 * (Physics.gravity.y * gravityScale) * 2.5f);
+
         }
     }
 
