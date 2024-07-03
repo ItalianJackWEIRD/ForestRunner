@@ -12,6 +12,7 @@ public class LevelGenerator : MonoBehaviour
     public GameObject Tile3;
     public GameObject Tile4;
     public GameObject Tile5;
+    public GameObject Tile6;
     public GameObject StartTile1;
     public GameObject StartTile2;
     public GameObject StartTile3;
@@ -81,6 +82,11 @@ public class LevelGenerator : MonoBehaviour
                 GameObject TempTile1 = Instantiate(Tile5, transform);
                 TempTile1.transform.position = new Vector3(-40, -0.25f, 0);
             }
+            else if (RandomInt1 == 5)
+            {
+                GameObject TempTile1 = Instantiate(Tile6, transform);
+                TempTile1.transform.position = new Vector3(-40, -0.25f, 0);
+            }
 
 
             int RandomInt2 = Random.Range(0, random);
@@ -114,6 +120,11 @@ public class LevelGenerator : MonoBehaviour
                 GameObject TempTile2 = Instantiate(Tile5, transform);
                 TempTile2.transform.position = new Vector3(-48, -0.25f, 0);
             }
+            else if (RandomInt2 == 5)
+            {
+                GameObject TempTile2 = Instantiate(Tile6, transform);
+                TempTile2.transform.position = new Vector3(-48, -0.25f, 0);
+            }
 
             int RandomInt3 = Random.Range(0, random);
             while (RandomInt3 == RandomInt2)
@@ -145,6 +156,11 @@ public class LevelGenerator : MonoBehaviour
             else if (RandomInt3 == 4)
             {
                 GameObject TempTile3 = Instantiate(Tile5, transform);
+                TempTile3.transform.position = new Vector3(-56, -0.25f, 0);
+            }
+            else if (RandomInt3 == 5)
+            {
+                GameObject TempTile3 = Instantiate(Tile6, transform);
                 TempTile3.transform.position = new Vector3(-56, -0.25f, 0);
             }
 
