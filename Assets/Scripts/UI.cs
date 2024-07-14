@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour
 {
@@ -12,8 +13,16 @@ public class UI : MonoBehaviour
     private Button PUHp;
     private Button PUJump;
 
+    private Button pauseButton;
+    private Button resumeButton;
+    private Button mainMenuButton;
+
+    private VisualElement pauseMenu;
+
     public Score score;
     public PUManager manager;
+
+    private bool isPaused = false;
 
     // Start is called before the first frame update
     void OnEnable()
@@ -26,6 +35,10 @@ public class UI : MonoBehaviour
         PUHp = root.Q<Button>("PotionHp");
         PUCoin = root.Q<Button>("PotionCoin");
         PUJump = root.Q<Button>("PotionJump");
+        pauseButton = root.Q<Button>("PauseButton");
+        pauseMenu = root.Q<VisualElement>("PauseMenu");
+        resumeButton = root.Q<Button>("ResumeButton");
+        mainMenuButton = root.Q<Button>("MainMenuButton");
 
         PUHp.style.display = DisplayStyle.None;
         PUJump.style.display = DisplayStyle.None;
@@ -33,6 +46,10 @@ public class UI : MonoBehaviour
 
         score = GetComponent<Score>();
         manager = GameObject.FindGameObjectWithTag("Player").GetComponent<PUManager>();
+
+        pauseButton.clicked += TogglePause;
+        resumeButton.clicked += TogglePause;
+        mainMenuButton.clicked += GoToMainMenu;
     }
 
     // Update is called once per frame
@@ -56,5 +73,25 @@ public class UI : MonoBehaviour
         else
             PUJump.style.display = DisplayStyle.None;
 
+    }
+
+    void TogglePause(){
+        isPaused = !isPaused;
+        if(isPaused)
+        {
+            Time.timeScale = 0;
+            pauseMenu.style.display = DisplayStyle.Flex;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            pauseMenu.style.display = DisplayStyle.None;
+        }
+    }
+
+    void GoToMainMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Menu");
     }
 }
