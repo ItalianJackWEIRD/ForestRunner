@@ -9,7 +9,7 @@ public class Coin : MonoBehaviour
 
     private void Start()
     {
-        ScoreText = GameObject.FindGameObjectWithTag("ScoreText").GetComponent<Score>();
+        ScoreText = GameObject.FindGameObjectWithTag("Player").GetComponent<Score>();
        
     }
 

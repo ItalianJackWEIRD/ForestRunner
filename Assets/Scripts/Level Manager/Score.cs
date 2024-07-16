@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
     private int ScoreInt = 0;
-    private string ScoreText;
 
     public void ScorePlusOne()
     {
@@ -18,13 +17,8 @@ public class Score : MonoBehaviour
         ScoreInt += 5;
     }
 
-    private void Update()
-    {
-        ScoreText = ScoreInt.ToString();
-    }
-
     public string GetScore ()
     {
-        return ScoreText;
+        return ScoreInt.ToString();
     }
 }
