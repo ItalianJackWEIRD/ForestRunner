@@ -5704,8 +5704,8 @@ MonoBehaviour:
   moveSpeed: 4
   random: 5
   Tile1: {fileID: 5371388168229630973, guid: c648c221b370ed741aa5c111627dc9cf, type: 3}
-  Tile2: {fileID: 5371388168229630973, guid: 3e47fcca51dd56b4a954182624197771, type: 3}
-  Tile3: {fileID: 5371388168229630973, guid: 1d1015368ac38cf449e95d01aecdde26, type: 3}
+  Tile2: {fileID: 5371388168229630973, guid: 83c8efd7f0ea37f489730f0e62752de0, type: 3}
+  Tile3: {fileID: 5371388168229630973, guid: 83c8efd7f0ea37f489730f0e62752de0, type: 3}
   Tile4: {fileID: 5371388168229630973, guid: 516ed3efa66ba894382eadab07276714, type: 3}
   Tile5: {fileID: 5371388168229630973, guid: 67e4ff93644c67d48a849e469dd2de86, type: 3}
   StartTile1: {fileID: 5371388168229630973, guid: f2b2a1c8dc13acb49b3f5bcb22c7c377,
