@@ -1,16 +1,18 @@
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
+using TMPro; // Importa TextMeshPro
 using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class RegisterManager : MonoBehaviour
 {
     public TMP_InputField emailInput;
     public TMP_InputField passwordInput;
+    public TMP_InputField confirmPasswordInput; // Aggiungi questo campo
     public Button registerButton;
     public Button goToLoginButton;
+    public TextMeshProUGUI errorMessage; // Campo per mostrare messaggi di errore
 
     private void Start()
     {
@@ -20,6 +22,20 @@ public class RegisterManager : MonoBehaviour
 
     private void OnRegister()
     {
+        // Controlla se le password corrispondono
+        if (passwordInput.text != confirmPasswordInput.text)
+        {
+            DisplayError("Passwords do not match.");
+            return;
+        }
+
+        // Controlla se la password è abbastanza lunga (opzionale)
+        if (passwordInput.text.Length < 6)
+        {
+            DisplayError("Password must be at least 6 characters long.");
+            return;
+        }
+
         var request = new RegisterPlayFabUserRequest
         {
             Email = emailInput.text,
@@ -38,6 +54,15 @@ public class RegisterManager : MonoBehaviour
 
     private void OnRegisterFailure(PlayFabError error)
     {
-        Debug.LogError("Registration failed: " + error.GenerateErrorReport());
+        DisplayError("Registration failed: " + error.GenerateErrorReport());
+    }
+
+    private void DisplayError(string message)
+    {
+        if (errorMessage != null)
+        {
+            errorMessage.text = message;
+        }
+        Debug.LogError(message);
     }
 }
