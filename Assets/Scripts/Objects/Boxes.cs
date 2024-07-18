@@ -36,7 +36,7 @@ public class Boxes : MonoBehaviour
         else
         {
             if (manager.GetLives() < 2)
-                SceneManager.LoadScene("Main");//game over and reload scene
+                SceneManager.LoadScene("Menu");//game over and reload scene
             else    //decrementa vita e shake schermo e distruggi game object
             {
                 manager.LifeMinus1();
