@@ -20,7 +20,7 @@ public class Boxes : MonoBehaviour
 
     private void Start()
     {
-        ScoreText = GameObject.FindGameObjectWithTag("ScoreText").GetComponent<Score>();
+        ScoreText = GameObject.FindGameObjectWithTag("Player").GetComponent<Score>();
         canDestroyBoxes = GameObject.FindGameObjectWithTag("Player").GetComponent<Attack>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
         manager = GameObject.FindGameObjectWithTag("Player").GetComponent<PUManager>();
