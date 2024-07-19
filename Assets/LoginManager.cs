@@ -62,7 +62,7 @@ public class LoginManager : MonoBehaviour
     private void OnLoginSuccess(LoginResult result)
     {
         Debug.Log("Login successful!");
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("Menu");
     }
 
     private void OnLoginFailure(PlayFabError error)
