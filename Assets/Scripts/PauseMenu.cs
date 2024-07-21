@@ -2,19 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PauseMenu : MonoBehaviour
 {
     public GameObject PausePanel;
 
-   /* void Start()
+    private void Start()
     {
-        PausePanel.SetActive(false);
-    }*/
 
-    void Update()
-    {
-        
     }
 
     public void Pause()
@@ -26,7 +22,7 @@ public class PauseMenu : MonoBehaviour
     public void Continue()
     {
         PausePanel.SetActive(false);
-        Time.timeScale = 1;
+        GameManager.Instance.StartCountdown();
     }
 
     public void MainMenu()

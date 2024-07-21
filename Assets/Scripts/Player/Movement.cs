@@ -31,6 +31,8 @@ public class Movement : MonoBehaviour
 
     public Material[] mat_sky;
 
+    public bool isGameOver = false;
+
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
@@ -44,6 +46,9 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
+        if(isGameOver || Time.timeScale == 0)
+            return;
+        
         GameObject check = GameObject.FindGameObjectWithTag("Box");
 
         if (check != null )
@@ -232,5 +237,10 @@ private void PlayerSlide()
         collider.height = height;
         collider.center.Set(collider.center.x, y, collider.center.z);
         Debug.Log("Collider Normal");
+    }
+
+    public void SetGameOver(bool gameOver)
+    {
+        isGameOver = gameOver;
     }
 }

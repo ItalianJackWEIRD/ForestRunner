@@ -21,4 +21,9 @@ public class Score : MonoBehaviour
     {
         return ScoreInt.ToString();
     }
+
+    public int GetScoreInt()
+    {
+        return ScoreInt;
+    }
 }

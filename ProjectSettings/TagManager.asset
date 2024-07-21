@@ -14,6 +14,7 @@ TagManager:
   - River
   - DeathBarrier
   - Tramp+
+  - ScoreManager
   layers:
   - Default
   - TransparentFX
