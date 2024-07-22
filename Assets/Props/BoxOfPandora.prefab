@@ -324,3 +324,4 @@ MonoBehaviour:
   myAnimationController: {fileID: 7511773440031220602}
   destroyedVersion: {fileID: 1000014038691284, guid: efebddd0b5766bd499be8b63f581de68,
     type: 3}
+  destructionSoundClip: {fileID: 0}

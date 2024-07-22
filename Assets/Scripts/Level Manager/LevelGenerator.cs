@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     public float moveSpeed;
-    public int random;
+    public int random; // Assicurati che il valore random copra tutti i 25 Tile
 
     public GameObject Tile1;
     public GameObject Tile2;
@@ -76,104 +76,15 @@ public class LevelGenerator : MonoBehaviour
                 RandomInt1 = Random.Range(0, random);
             }
 
-            if (RandomInt1 == 0)
-            {
-                GameObject TempTile1 = Instantiate(Tile1, transform);
-                TempTile1.transform.position = new Vector3(-40, -0.25f, 0);
-            }
-            else if(RandomInt1 == 1)
-            {
-                GameObject TempTile1 = Instantiate(Tile2, transform);
-                TempTile1.transform.position = new Vector3(-40, -0.25f, 0);
-            }
-            else if (RandomInt1 == 2)
-            {
-                GameObject TempTile1 = Instantiate(Tile3, transform);
-                TempTile1.transform.position = new Vector3(-40, -0.25f, 0);
-            }
-            else if (RandomInt1 == 3)
-            {
-                GameObject TempTile1 = Instantiate(Tile4, transform);
-                TempTile1.transform.position = new Vector3(-40, -0.25f, 0);
-            }
-            else if (RandomInt1 == 4)
-            {
-                GameObject TempTile1 = Instantiate(Tile5, transform);
-                TempTile1.transform.position = new Vector3(-40, -0.25f, 0);
-            }
-            else if(RandomInt1 == 5)
-            {
-                GameObject TempTile1 = Instantiate(Tile6, transform);
-                TempTile1.transform.position = new Vector3(-40, -0.25f, 0);
-            }
-            else if (RandomInt1 == 6)
-            {
-                GameObject TempTile1 = Instantiate(Tile7, transform);
-                TempTile1.transform.position = new Vector3(-40, -0.25f, 0);
-            }
-            else if (RandomInt1 == 7)
-            {
-                GameObject TempTile1 = Instantiate(Tile8, transform);
-                TempTile1.transform.position = new Vector3(-40, -0.25f, 0);
-            }
-            else if (RandomInt1 == 8)
-            {
-                GameObject TempTile1 = Instantiate(Tile9, transform);
-                TempTile1.transform.position = new Vector3(-40, -0.25f, 0);
-            }
-
-
+            InstantiateTile(RandomInt1, -40);
+            
             int RandomInt2 = Random.Range(0, random);
             while (RandomInt2 == RandomInt1)
             {
                 RandomInt2 = Random.Range(0, random);
             }
 
-            if (RandomInt2 == 0)
-            {
-                GameObject TempTile2 = Instantiate(Tile1, transform);
-                TempTile2.transform.position = new Vector3(-48, -0.25f, 0);
-            }
-            else if(RandomInt2 == 1)
-            {
-                GameObject TempTile2 = Instantiate(Tile2, transform);
-                TempTile2.transform.position = new Vector3(-48, -0.25f, 0);
-            }
-            else if (RandomInt2 == 2)
-            {
-                GameObject TempTile2 = Instantiate(Tile3, transform);
-                TempTile2.transform.position = new Vector3(-48, -0.25f, 0);
-            }
-            else if (RandomInt2 == 3)
-            {
-                GameObject TempTile2 = Instantiate(Tile4, transform);
-                TempTile2.transform.position = new Vector3(-48, -0.25f, 0);
-            }
-            else if (RandomInt2 == 4)
-            {
-                GameObject TempTile2 = Instantiate(Tile5, transform);
-                TempTile2.transform.position = new Vector3(-48, -0.25f, 0);
-            }
-            else if (RandomInt2 == 5)
-            {
-                GameObject TempTile2 = Instantiate(Tile6, transform);
-                TempTile2.transform.position = new Vector3(-48, -0.25f, 0);
-            }
-            else if (RandomInt2 == 6)
-            {
-                GameObject TempTile2 = Instantiate(Tile7, transform);
-                TempTile2.transform.position = new Vector3(-48, -0.25f, 0);
-            }
-            else if (RandomInt2 == 7)
-            {
-                GameObject TempTile2 = Instantiate(Tile8, transform);
-                TempTile2.transform.position = new Vector3(-48, -0.25f, 0);
-            }
-            else if (RandomInt2 == 8)
-            {
-                GameObject TempTile2 = Instantiate(Tile9, transform);
-                TempTile2.transform.position = new Vector3(-48, -0.25f, 0);
-            }
+            InstantiateTile(RandomInt2, -48);
 
             int RandomInt3 = Random.Range(0, random);
             while (RandomInt3 == RandomInt2)
@@ -182,53 +93,48 @@ public class LevelGenerator : MonoBehaviour
             }
             lastRandom = RandomInt3;
 
-            if (RandomInt3 == 0)
-            {
-                GameObject TempTile3 = Instantiate(Tile1, transform);
-                TempTile3.transform.position = new Vector3(-56, -0.25f, 0);
-            }
-            else if (RandomInt3 == 1)
-            {
-                GameObject TempTile3 = Instantiate(Tile2, transform);
-                TempTile3.transform.position = new Vector3(-56, -0.25f, 0);
-            }
-            else if (RandomInt3 == 2)
-            {
-                GameObject TempTile3 = Instantiate(Tile3, transform);
-                TempTile3.transform.position = new Vector3(-56, -0.25f, 0);
-            }
-            else if (RandomInt3 == 3)
-            {
-                GameObject TempTile3 = Instantiate(Tile4, transform);
-                TempTile3.transform.position = new Vector3(-56, -0.25f, 0);
-            }
-            else if (RandomInt3 == 4)
-            {
-                GameObject TempTile3 = Instantiate(Tile5, transform);
-                TempTile3.transform.position = new Vector3(-56, -0.25f, 0);
-            }
-            else if (RandomInt3 == 5)
-            {
-                GameObject TempTile3 = Instantiate(Tile6, transform);
-                TempTile3.transform.position = new Vector3(-56, -0.25f, 0);
-            }
-            else if (RandomInt3 == 6)
-            {
-                GameObject TempTile3 = Instantiate(Tile7, transform);
-                TempTile3.transform.position = new Vector3(-56, -0.25f, 0);
-            }
-            else if (RandomInt3 == 7)
-            {
-                GameObject TempTile3 = Instantiate(Tile8, transform);
-                TempTile3.transform.position = new Vector3(-56, -0.25f, 0);
-            }
-            else if (RandomInt3 == 8)
-            {
-                GameObject TempTile3 = Instantiate(Tile9, transform);
-                TempTile3.transform.position = new Vector3(-56, -0.25f, 0);
-            }
+            InstantiateTile(RandomInt3, -56);
 
             Index = Index + 24f;
+        }
+    }
+
+    private void InstantiateTile(int randomInt, float positionX)
+    {
+        GameObject tempTile = null;
+
+        switch (randomInt)
+        {
+            case 0: tempTile = Instantiate(Tile1, transform); break;
+            case 1: tempTile = Instantiate(Tile2, transform); break;
+            case 2: tempTile = Instantiate(Tile3, transform); break;
+            case 3: tempTile = Instantiate(Tile4, transform); break;
+            case 4: tempTile = Instantiate(Tile5, transform); break;
+            case 5: tempTile = Instantiate(Tile6, transform); break;
+            case 6: tempTile = Instantiate(Tile7, transform); break;
+            case 7: tempTile = Instantiate(Tile8, transform); break;
+            case 8: tempTile = Instantiate(Tile9, transform); break;
+            case 9: tempTile = Instantiate(Tile10, transform); break;
+            case 10: tempTile = Instantiate(Tile11, transform); break;
+            case 11: tempTile = Instantiate(Tile12, transform); break;
+            case 12: tempTile = Instantiate(Tile13, transform); break;
+            case 13: tempTile = Instantiate(Tile14, transform); break;
+            case 14: tempTile = Instantiate(Tile15, transform); break;
+            case 15: tempTile = Instantiate(Tile16, transform); break;
+            case 16: tempTile = Instantiate(Tile17, transform); break;
+            case 17: tempTile = Instantiate(Tile18, transform); break;
+            case 18: tempTile = Instantiate(Tile19, transform); break;
+            case 19: tempTile = Instantiate(Tile20, transform); break;
+            case 20: tempTile = Instantiate(Tile21, transform); break;
+            case 21: tempTile = Instantiate(Tile22, transform); break;
+            case 22: tempTile = Instantiate(Tile23, transform); break;
+            case 23: tempTile = Instantiate(Tile24, transform); break;
+            case 24: tempTile = Instantiate(Tile25, transform); break;
+        }
+
+        if (tempTile != null)
+        {
+            tempTile.transform.position = new Vector3(positionX, -0.25f, 0);
         }
     }
 }

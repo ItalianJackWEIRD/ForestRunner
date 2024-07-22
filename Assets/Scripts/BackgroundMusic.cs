@@ -77,6 +77,7 @@ public class BackgroundMusic : MonoBehaviour
             Debug.LogError("No AudioClip assigned to the AudioSource!");
             return;
         }
+        
 
         // Carica il volume salvato o impostalo al valore di default
         float savedVolume = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
