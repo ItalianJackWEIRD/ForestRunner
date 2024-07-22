@@ -1,2 +1,2 @@
 Forest Runner
-Endless Game
+Endless Game.
