@@ -8435,19 +8435,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 4
   random: 13
-  Tile1: {fileID: 5371388168229630973, guid: c648c221b370ed741aa5c111627dc9cf, type: 3}
-  Tile2: {fileID: 5371388168229630973, guid: 3e47fcca51dd56b4a954182624197771, type: 3}
-  Tile3: {fileID: 5371388168229630973, guid: 4a463d0838384fe4aa5d6e8c61620434, type: 3}
-  Tile4: {fileID: 5371388168229630973, guid: 516ed3efa66ba894382eadab07276714, type: 3}
-  Tile5: {fileID: 5371388168229630973, guid: 67e4ff93644c67d48a849e469dd2de86, type: 3}
-  Tile6: {fileID: 5371388168229630973, guid: 513d8b4a017998e40b98b3352ea36e6a, type: 3}
-  Tile7: {fileID: 5371388168229630973, guid: 2cf5b007048bc134da66e9d518ca2e33, type: 3}
-  Tile8: {fileID: 5371388168229630973, guid: 9870a8f3868d22448ac73d50379f811f, type: 3}
-  Tile9: {fileID: 5371388168229630973, guid: 8f82e23a5f0b4e145903f122b95d4d11, type: 3}
-  Tile10: {fileID: 5371388168229630973, guid: 726552636dda90c44ade9be64d220778, type: 3}
-  Tile11: {fileID: 5371388168229630973, guid: 79f369c2b82870844ba6aa9a7ecca6db, type: 3}
-  Tile12: {fileID: 5371388168229630973, guid: b1e997501aad9fd4aa98b43394b4c0cc, type: 3}
-  Tile13: {fileID: 5371388168229630973, guid: b1141f48900512a47a953679aeec91e1, type: 3}
+  Tile1: {fileID: 0}
+  Tile2: {fileID: 0}
+  Tile3: {fileID: 0}
+  Tile4: {fileID: 0}
+  Tile5: {fileID: 0}
+  Tile6: {fileID: 0}
+  Tile7: {fileID: 0}
+  Tile8: {fileID: 0}
+  Tile9: {fileID: 0}
+  Tile10: {fileID: 0}
+  Tile11: {fileID: 0}
+  Tile12: {fileID: 0}
+  Tile13: {fileID: 0}
   Tile14: {fileID: 0}
   Tile15: {fileID: 0}
   Tile16: {fileID: 0}
@@ -8460,14 +8460,10 @@ MonoBehaviour:
   Tile23: {fileID: 0}
   Tile24: {fileID: 0}
   Tile25: {fileID: 0}
-  StartTile1: {fileID: 5371388168229630973, guid: f2b2a1c8dc13acb49b3f5bcb22c7c377,
-    type: 3}
-  StartTile2: {fileID: 5371388168229630973, guid: 0f7378cf8a4b597438e0bafe18938fdc,
-    type: 3}
-  StartTile3: {fileID: 5371388168229630973, guid: d08e63287bda96f40bdfe65e196c2fed,
-    type: 3}
-  StartTile4: {fileID: 5371388168229630973, guid: 1bf7caa20e836f14aa4d9bd80f5d0973,
-    type: 3}
+  StartTile1: {fileID: 0}
+  StartTile2: {fileID: 0}
+  StartTile3: {fileID: 0}
+  StartTile4: {fileID: 0}
 --- !u!4 &1366496884
 Transform:
   m_ObjectHideFlags: 0
@@ -10601,10 +10597,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.13
-  m_Height: 5.196927
+  m_Radius: 0.6607298
+  m_Height: 5.1969266
   m_Direction: 1
-  m_Center: {x: 0, y: 2.7534606, z: 0}
+  m_Center: {x: -4.3972055e-15, y: 2.7534604, z: 0.46926954}
 --- !u!4 &2101788048
 Transform:
   m_ObjectHideFlags: 0
