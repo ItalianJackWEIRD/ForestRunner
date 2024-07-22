@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     public float moveSpeed;
-    public int random; // Assicurati che il valore random copra tutti i 25 Tile
+    public int random; // Assicurati che il valore random copra tutti i 24 Tile rimanenti
 
     public GameObject Tile1;
     public GameObject Tile2;
@@ -36,15 +36,13 @@ public class LevelGenerator : MonoBehaviour
     public GameObject StartTile2;
     public GameObject StartTile3;
     public GameObject StartTile4;
-    public GameObject StartTile5;
-    public GameObject StartTile6;
 
     private float Index = 0;
     private int lastRandom;
 
     private void Start()
     {
-        //create 5 tile first game
+        // Crea 5 tiles iniziali
         GameObject StartPlane1 = Instantiate(StartTile1, transform);
         StartPlane1.transform.position = new Vector3(7, -0.25f, 0);
         
@@ -56,17 +54,11 @@ public class LevelGenerator : MonoBehaviour
        
         GameObject StartPlane4 = Instantiate(StartTile4, transform);
         StartPlane4.transform.position = new Vector3(-17, -0.25f, 0);
-       
-        GameObject StartPlane5 = Instantiate(StartTile5, transform);
-        StartPlane5.transform.position = new Vector3(-25, -0.25f, 0);
-
-        GameObject StartPlane6 = Instantiate(StartTile6, transform);
-        StartPlane6.transform.position = new Vector3(-33, -0.25f, 0);
     }
 
     private void Update()
     {
-        gameObject.transform.position += new Vector3(moveSpeed * Time.deltaTime, 0, 0);  //tiles movment X direction axis
+        gameObject.transform.position += new Vector3(moveSpeed * Time.deltaTime, 0, 0);  // tiles movment X direction axis
 
         if(transform.position.x >= Index)
         {
@@ -76,7 +68,7 @@ public class LevelGenerator : MonoBehaviour
                 RandomInt1 = Random.Range(0, random);
             }
 
-            InstantiateTile(RandomInt1, -40);
+            InstantiateTile(RandomInt1, -25);
             
             int RandomInt2 = Random.Range(0, random);
             while (RandomInt2 == RandomInt1)
@@ -84,7 +76,7 @@ public class LevelGenerator : MonoBehaviour
                 RandomInt2 = Random.Range(0, random);
             }
 
-            InstantiateTile(RandomInt2, -48);
+            InstantiateTile(RandomInt2, -33);
 
             int RandomInt3 = Random.Range(0, random);
             while (RandomInt3 == RandomInt2)
@@ -93,7 +85,7 @@ public class LevelGenerator : MonoBehaviour
             }
             lastRandom = RandomInt3;
 
-            InstantiateTile(RandomInt3, -56);
+            InstantiateTile(RandomInt3, -41);
 
             Index = Index + 24f;
         }

@@ -15,18 +15,31 @@ public class PUManager : MonoBehaviour
 
     public int secondsToWait;
 
+    public AudioClip powerUp1Sound;  // Campo pubblico per il suono di PowerUp1
+    public AudioClip powerUp2Sound;  // Campo pubblico per il suono di PowerUp2
+    public AudioClip powerUp3Sound;  // Campo pubblico per il suono di PowerUp3
+    private AudioSource audioSource; // Componente AudioSource
+
     private void Start()
     {
         mov = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
+
+        // Ottieni il componente AudioSource sullo stesso GameObject
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource non trovato sul GameObject del PUManager!");
+        }
     }
 
-    public void Set1()   //setta 1
+    public void Set1()   // Setta PowerUp1
     {
         if (powerUp1)
         {
             StopCoroutine(Wait1());
         }
         powerUp1 = true;
+        PlaySound(powerUp1Sound);  // Riproduci il suono di PowerUp1
         Debug.Log("PowerUp1 true");
         StartCoroutine(Wait1());
     }
@@ -35,7 +48,8 @@ public class PUManager : MonoBehaviour
     { 
         return powerUp1; 
     } 
-    IEnumerator Wait1()   //aspetta tot secondi e poi spegne l'effetto di power Up
+
+    IEnumerator Wait1()   // Aspetta tot secondi e poi spegne l'effetto di PowerUp1
     {
         yield return new WaitForSecondsRealtime(secondsToWait);
         powerUp1 = false;
@@ -62,27 +76,20 @@ public class PUManager : MonoBehaviour
         if (powerUp2)
         {
             StopCoroutine(Wait2());
-            powerUp2 = true;
-            PlayerLives = 99;
-            Debug.Log("PowerUp2 true");
-            StartCoroutine(Wait2());
         }
-        else
-        {
-            powerUp2 = true;
-            PlayerLivesTemp = PlayerLives;
-            PlayerLives = 99;
-            Debug.Log("PowerUp2 true");
-            StartCoroutine(Wait2());
-        }
+        powerUp2 = true;
+        PlayerLives = 99;
+        PlaySound(powerUp2Sound);  // Riproduci il suono di PowerUp2
+        Debug.Log("PowerUp2 true");
+        StartCoroutine(Wait2());
     }
 
     public bool Get2()
     {
         return powerUp2;
     }
- 
-    IEnumerator Wait2()   //aspetta tot secondi e poi spegne l'effetto di power Up
+
+    IEnumerator Wait2()   // Aspetta tot secondi e poi spegne l'effetto di PowerUp2
     {
         yield return new WaitForSecondsRealtime(secondsToWait);
         powerUp2 = false;
@@ -97,6 +104,7 @@ public class PUManager : MonoBehaviour
             StopCoroutine(Wait3());
         }
         powerUp3 = true;
+        PlaySound(powerUp3Sound);  // Riproduci il suono di PowerUp3
         Debug.Log("PowerUp3 true");
         mov.SetJump(3.5f, 1.85f); 
         StartCoroutine(Wait3());
@@ -107,11 +115,23 @@ public class PUManager : MonoBehaviour
         return powerUp3;
     }
 
-    IEnumerator Wait3()   //aspetta tot secondi e poi spegne l'effetto di power Up
+    IEnumerator Wait3()   // Aspetta tot secondi e poi spegne l'effetto di PowerUp3
     {
         yield return new WaitForSecondsRealtime(secondsToWait);
         powerUp3 = false;
         mov.SetJumpNormal();
         Debug.Log("PowerUp3 false");
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
+        else
+        {
+            Debug.LogError("AudioSource o AudioClip non trovato!");
+        }
     }
 }

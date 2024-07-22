@@ -1,17 +1,18 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Boxes : MonoBehaviour
 {
     [SerializeField] private Animator myAnimationController;
-    public GameObject destroyedVersion;
-    public AudioClip destructionSoundClip;  // Campo pubblico per il suono di distruzione
-
     private Score ScoreText;
     private Attack canDestroyBoxes;
     private Movement player;
     private PUManager manager;
     private Shake shake;
-    private int currentScore;
+
+    public GameObject destroyedVersion;
 
     private void Start()
     {
@@ -20,35 +21,25 @@ public class Boxes : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
         manager = GameObject.FindGameObjectWithTag("Player").GetComponent<PUManager>();
         shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<Shake>();
-
-        if (ScoreText == null) Debug.LogError("ScoreText non trovato!");
-        if (canDestroyBoxes == null) Debug.LogError("canDestroyBoxes non trovato!");
-        if (player == null) Debug.LogError("player non trovato!");
-        if (manager == null) Debug.LogError("manager non trovato!");
-        if (shake == null) Debug.LogError("shake non trovato!");
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (canDestroyBoxes.canDestroy())
         {
-            if (canDestroyBoxes.canDestroy())
+            destroyBox();
+        }
+        else
+        {
+            if (manager.GetLives() < 2)
             {
-                destroyBox();
+                ShowGameOver();
             }
             else
             {
-                if (manager.GetLives() < 2)
-                {
-                    currentScore = ScoreText.GetScoreInt();
-                    GameOver();
-                }
-                else
-                {
-                    manager.LifeMinus1();
-                    shake.camShake();
-                    destroyBoxNoCoin();
-                }
+                manager.LifeMinus1();
+                shake.camShake();
+                destroyBoxNoCoin();
             }
         }
     }
@@ -57,47 +48,32 @@ public class Boxes : MonoBehaviour
     {
         myAnimationController.SetBool("crashBool", true);
         Instantiate(destroyedVersion, transform.position, transform.rotation);
-        PlayDestructionSound();  // Riproduci il suono di distruzione
-        Destroy(gameObject);
-        int random = Random.Range(0, 20);
-        if (random <= 11)
+        Destroy(gameObject);//box
+        int random = Random.Range(0, 100); // Cambiato per facilitare la gestione delle probabilità
+        if (random < 60)
             ScoreText.ScorePlusFive();
-        else if (random <= 15)
+        else if (random < 80)  // 20% +1 hp
             manager.LifePlus1();
-        else if (random <= 17)
+        else if (random < 90)  //magnet
             manager.Set1();
-        else if (random == 18)
+        else if (random < 95)  //invincible
             manager.Set2();
-        else if (random == 19)
-            manager.Set3();
+
     }
 
     public void destroyBoxNoCoin()
     {
         myAnimationController.SetBool("crashBool", true);
         Instantiate(destroyedVersion, transform.position, transform.rotation);
-        PlayDestructionSound();  // Riproduci il suono di distruzione
-        Destroy(gameObject);
+        Destroy(gameObject);//box
     }
 
-    private void PlayDestructionSound()
-    {
-        if (SoundManager.Instance != null)
-        {
-            SoundManager.Instance.PlaySound(destructionSoundClip);
-        }
-        else
-        {
-            Debug.LogError("SoundManager non trovato!");
-        }
-    }
-
-    private void GameOver()
+    private void ShowGameOver()
     {
         GameOverManager gameOverManager = FindObjectOfType<GameOverManager>();
         if (gameOverManager != null)
         {
-            gameOverManager.ShowGameOver(currentScore);
+            gameOverManager.ShowGameOver(ScoreText.GetScoreInt());
         }
         else
         {

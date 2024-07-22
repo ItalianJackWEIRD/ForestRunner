@@ -33,6 +33,9 @@ public class Movement : MonoBehaviour
 
     public bool isGameOver = false;
 
+    public AudioClip trampolineSound;  // Aggiungi questa riga
+    private AudioSource audioSource;  // Aggiungi questa ri
+
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
@@ -42,6 +45,7 @@ public class Movement : MonoBehaviour
         box = GameObject.FindGameObjectWithTag("Box").GetComponent<Boxes>();
         comingDown = false;
         collider = GetComponent<CapsuleCollider>();
+       audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -140,6 +144,7 @@ else
 
 if (SwipeManager.swipeUp && isGrounded)
 {
+    PlayerJump();
     velocity = Mathf.Sqrt(jumpHeight * -2 * (Physics.gravity.y * gravityScale));
 }
 
@@ -178,6 +183,10 @@ private void PlayerSlide()
     animator.SetTrigger("Slide");
 }
 
+private void PlayerJump(){
+    animator.SetTrigger("Jump");
+}
+
 
     private void OnTriggerEnter(Collider other)
 
@@ -203,6 +212,11 @@ private void PlayerSlide()
 
         {
 
+ // Riproduci il suono
+        if (audioSource != null && trampolineSound != null)
+        {
+            audioSource.PlayOneShot(trampolineSound);
+        }
             comingDown = false;
 
             //gravityScale = tempGravityScale;

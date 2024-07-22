@@ -3,7 +3,14 @@ guid: 80eb3eb8c4da043d4b29326f8133d38e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - gameOverPanel: {instanceID: 0}
+  - currentScoreText: {instanceID: 0}
+  - highScoreText: {instanceID: 0}
+  - mainMenuButton: {instanceID: 0}
+  - restartButton: {instanceID: 0}
+  - movement: {instanceID: 0}
+  - gameOverSound: {fileID: 8300000, guid: 7bea08e91589c984487ce9cfc5da7daa, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
