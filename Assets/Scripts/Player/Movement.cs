@@ -25,7 +25,11 @@ public class Movement : MonoBehaviour
 
     [SerializeField] float floorHeight = 0.5f;
     [SerializeField] Transform feet;
+
+    // state of the player
     public bool isGrounded;
+    public bool isSliding;
+    public bool isJumping;
     public bool comingDown;
     public bool onTheWater;
 
@@ -172,17 +176,19 @@ public class Movement : MonoBehaviour
             }
         }
 
+        // Animator
+        CheckAnimator();
+
         RenderSettings.skybox.SetFloat("_Rotation", Time.time * 1.0f); //rotate skybox
     }
 
-    private void PlayerSlide()
+    void CheckAnimator()
     {
-        animator.SetTrigger("Slide");
-    }
-
-    private void PlayerJump()
-    {
-        animator.SetTrigger("Jump");
+        animator.SetBool("isGrounded", isGrounded);
+        animator.SetBool("isJumping", isJumping);
+        animator.SetBool("isSliding", isSliding);
+        animator.SetBool("comingDown", comingDown);
+        //animator.SetBool("onTheWater", onTheWater);   // Uncomment if you have an onTheWater animation
     }
 
 
@@ -240,6 +246,7 @@ public class Movement : MonoBehaviour
 
     IEnumerator Roll()
     {
+        isSliding = true;
         float y = collider.center.y;
         float height = collider.height;
         collider.height = 2.12f;
@@ -247,6 +254,7 @@ public class Movement : MonoBehaviour
         yield return new WaitForSecondsRealtime(1.3f);
         collider.height = height;
         collider.center.Set(collider.center.x, y, collider.center.z);
+        isSliding = false;
     }
 
     public void SetGameOver(bool gameOver)
