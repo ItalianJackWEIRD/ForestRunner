@@ -14,8 +14,10 @@ public class Movement : MonoBehaviour
     private bool Lane2 = true;
     private bool Lane3 = false;
 
+    [Header("Movement")]
     [SerializeField] float jumpHeight = 5;
     [SerializeField] float gravityScale = 5;
+    [SerializeField] float slideDuration = 1f;
     private float tempGravityScale;
     [SerializeField] LayerMask groundMask;
 
@@ -132,7 +134,7 @@ public class Movement : MonoBehaviour
         velocity += Physics.gravity.y * gravityScale * Time.deltaTime;
 
         RaycastHit hit;
-
+        // calcola la discesa
         if (Physics.Raycast(feet.position, Vector3.down, out hit, floorHeight, groundMask) && velocity < 0 || (Player.transform.position.y < 0.1f && !onTheWater))
         {
             velocity = 0;
@@ -146,11 +148,15 @@ public class Movement : MonoBehaviour
             isGrounded = false;
         }
 
+        // salto
+        if (isGrounded) isJumping = false; // Reset isJumping when grounded
+
         if (SwipeManager.swipeUp && isGrounded)
         {
-            PlayerJump();
+            isJumping = true;
             velocity = Mathf.Sqrt(jumpHeight * -2 * (Physics.gravity.y * gravityScale));
         }
+
 
         if (!comingDown) //se non sta nello swipe down
         {
@@ -171,7 +177,6 @@ public class Movement : MonoBehaviour
             }
             else //sta per terra deve scivolare
             {
-                PlayerSlide();
                 StartCoroutine(Roll());
             }
         }
@@ -184,11 +189,10 @@ public class Movement : MonoBehaviour
 
     void CheckAnimator()
     {
-        animator.SetBool("isGrounded", isGrounded);
-        animator.SetBool("isJumping", isJumping);
-        animator.SetBool("isSliding", isSliding);
-        animator.SetBool("comingDown", comingDown);
-        //animator.SetBool("onTheWater", onTheWater);   // Uncomment if you have an onTheWater animation
+        animator.SetBool("Jump", isJumping);
+        animator.SetBool("Slide", isSliding);
+        animator.SetBool("Floating", comingDown);
+        //animator.SetBool("onTheWater", onTheWater && isGameOver);   // Uncomment if you have an onTheWater animation when dead
     }
 
 
@@ -251,7 +255,7 @@ public class Movement : MonoBehaviour
         float height = collider.height;
         collider.height = 2.12f;
         collider.center.Set(collider.center.x, 1.04f, collider.center.z);
-        yield return new WaitForSecondsRealtime(1.3f);
+        yield return new WaitForSecondsRealtime(slideDuration);
         collider.height = height;
         collider.center.Set(collider.center.x, y, collider.center.z);
         isSliding = false;
