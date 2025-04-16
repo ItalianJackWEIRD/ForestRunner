@@ -11,20 +11,12 @@ public class destroyedBoxes : MonoBehaviour
     void Start()
     {
         // Ottieni il componente AudioSource e assegna il clip di distruzione
-        audioSource = GetComponent<AudioSource>();
-        if (audioSource == null)
-        {
-            Debug.LogError("AudioSource non trovato sul prefab della scatola rotta!");
-        }
+        audioSource = GameObject.FindGameObjectWithTag("DestroyedBox").GetComponent<AudioSource>();
 
         // Riproduci il suono di distruzione se il clip è assegnato
         if (destructionSoundClip != null && audioSource != null)
         {
             audioSource.PlayOneShot(destructionSoundClip);
-        }
-        else
-        {
-            Debug.LogError("AudioClip non assegnato o AudioSource non trovato!");
         }
 
         StartCoroutine(DestroyBox());

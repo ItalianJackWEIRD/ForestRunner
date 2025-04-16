@@ -13,11 +13,7 @@ public class Score : MonoBehaviour
     private void Start()
     {
         // Ottieni il componente AudioSource sullo stesso GameObject
-        audioSource = GetComponent<AudioSource>();
-        if (audioSource == null)
-        {
-            Debug.LogError("AudioSource non trovato sul GameObject del punteggio!");
-        }
+        audioSource = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
     }
 
     public void ScorePlusOne()
@@ -47,10 +43,6 @@ public class Score : MonoBehaviour
         if (audioSource != null && collectSoundClip != null)
         {
             audioSource.PlayOneShot(collectSoundClip);
-        }
-        else
-        {
-            Debug.LogError("AudioSource o AudioClip non trovato!");
         }
     }
 }

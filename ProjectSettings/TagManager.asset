@@ -15,6 +15,7 @@ TagManager:
   - DeathBarrier
   - Tramp+
   - ScoreManager
+  - DestroyedBox
   layers:
   - Default
   - TransparentFX

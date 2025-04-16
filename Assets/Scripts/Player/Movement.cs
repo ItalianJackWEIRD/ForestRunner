@@ -45,17 +45,17 @@ public class Movement : MonoBehaviour
         box = GameObject.FindGameObjectWithTag("Box").GetComponent<Boxes>();
         comingDown = false;
         collider = GetComponent<CapsuleCollider>();
-       audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
-        if(isGameOver || Time.timeScale == 0)
+        if (isGameOver || Time.timeScale == 0)
             return;
-        
+
         GameObject check = GameObject.FindGameObjectWithTag("Box");
 
-        if (check != null )
+        if (check != null)
 
         {
 
@@ -65,127 +65,125 @@ public class Movement : MonoBehaviour
 
         // SWIPE
 
-float smoothTime = 0.2f;
-Vector3 targetPosition = Player.position;
-Transform cameraTransform = GameObject.Find("CamFollow").transform;
+        float smoothTime = 0.2f;
+        Vector3 targetPosition = Player.position;
+        Transform cameraTransform = GameObject.Find("CamFollow").transform;
 
-if (Lane3 && Player.position.z < 1.1f)
-{
-    targetPosition.z = 1.1f;
-}
-else if (Lane1 && Player.position.z > -1.1f)
-{
-    targetPosition.z = -1.1f;
-}
-else if (Lane2)
-{
-    if (Player.position.z < -0.1f)
-    {
-        targetPosition.z = 0.1f;
+        if (Lane3 && Player.position.z < 1.1f)
+        {
+            targetPosition.z = 1.1f;
+        }
+        else if (Lane1 && Player.position.z > -1.1f)
+        {
+            targetPosition.z = -1.1f;
+        }
+        else if (Lane2)
+        {
+            if (Player.position.z < -0.1f)
+            {
+                targetPosition.z = 0.1f;
+            }
+            else if (Player.position.z > 0.1f)
+            {
+                targetPosition.z = -0.1f;
+            }
+        }
+
+        // Smoothly move player to target position
+        Player.position = Vector3.Lerp(Player.position, targetPosition, smoothTime);
+
+        // Smoothly move camera to follow player
+        Vector3 cameraTargetPosition = new Vector3(cameraTransform.position.x, cameraTransform.position.y, Player.position.z);
+        cameraTransform.position = Vector3.MoveTowards(cameraTransform.position, cameraTargetPosition, cameraTurn * Time.deltaTime);
+
+        #region ChangeBools
+        if (SwipeManager.swipeRight && !Lane3 && Lane1)
+        {
+            Lane2 = true;
+            Lane1 = false;
+            Lane3 = false;
+        }
+        else if (SwipeManager.swipeLeft && Lane2 && Player.position.z <= 0.2f)
+        {
+            Lane1 = true;
+            Lane2 = false;
+            Lane3 = false;
+        }
+        else if (SwipeManager.swipeRight && Lane2 && Player.position.z >= -0.2f)
+        {
+            Lane3 = true;
+            Lane1 = false;
+            Lane2 = false;
+        }
+        else if (SwipeManager.swipeLeft && !Lane1 && Lane3)
+        {
+            Lane2 = true;
+            Lane1 = false;
+            Lane3 = false;
+        }
+        #endregion
+
+        // swipe up
+
+        velocity += Physics.gravity.y * gravityScale * Time.deltaTime;
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(feet.position, Vector3.down, out hit, floorHeight, groundMask) && velocity < 0 || (Player.transform.position.y < 0.1f && !onTheWater))
+        {
+            velocity = 0;
+            Vector3 surface = hit.point + Vector3.up * floorHeight;
+            transform.position = new Vector3(transform.position.x, surface.y, transform.position.z);
+            isGrounded = true;
+            comingDown = false;
+        }
+        else
+        {
+            isGrounded = false;
+        }
+
+        if (SwipeManager.swipeUp && isGrounded)
+        {
+            PlayerJump();
+            velocity = Mathf.Sqrt(jumpHeight * -2 * (Physics.gravity.y * gravityScale));
+        }
+
+        if (!comingDown) //se non sta nello swipe down
+        {
+            transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime);
+        }
+        else //se sta nello swipe down
+        {
+            transform.Translate(new Vector3(0, -downFactor, 0) * Time.deltaTime);
+        }
+
+        // swipe down
+
+        if (SwipeManager.swipeDown)
+        {
+            if (!isGrounded) //sta nel salto, deve tornare a terra
+            {
+                comingDown = true;
+            }
+            else //sta per terra deve scivolare
+            {
+                PlayerSlide();
+                StartCoroutine(Roll());
+            }
+        }
+
+        RenderSettings.skybox.SetFloat("_Rotation", Time.time * 1.0f); //rotate skybox
     }
-    else if (Player.position.z > 0.1f)
+
+    private void PlayerSlide()
     {
-        targetPosition.z = -0.1f;
+        animator.SetTrigger("Slide");
     }
-}
 
-// Smoothly move player to target position
-Player.position = Vector3.Lerp(Player.position, targetPosition, smoothTime);
-
-// Smoothly move camera to follow player
-Vector3 cameraTargetPosition = new Vector3(cameraTransform.position.x, cameraTransform.position.y, Player.position.z);
-cameraTransform.position = Vector3.Lerp(cameraTransform.position, cameraTargetPosition, smoothTime * cameraTurn * Time.deltaTime);
-
-#region ChangeBools
-if (SwipeManager.swipeRight && !Lane3 && Lane1)
-{
-    Lane2 = true;
-    Lane1 = false;
-    Lane3 = false;
-}
-else if (SwipeManager.swipeLeft && Lane2 && Player.position.z <= 0.2f)
-{
-    Lane1 = true;
-    Lane2 = false;
-    Lane3 = false;
-}
-else if (SwipeManager.swipeRight && Lane2 && Player.position.z >= -0.2f)
-{
-    Lane3 = true;
-    Lane1 = false;
-    Lane2 = false;
-}
-else if (SwipeManager.swipeLeft && !Lane1 && Lane3)
-{
-    Lane2 = true;
-    Lane1 = false;
-    Lane3 = false;
-}
-#endregion
-
-// swipe up
-
-velocity += Physics.gravity.y * gravityScale * Time.deltaTime;
-
-RaycastHit hit;
-
-if (Physics.Raycast(feet.position, Vector3.down, out hit, floorHeight, groundMask) && velocity < 0 || (Player.transform.position.y < 0.1f && !onTheWater))
-{
-    velocity = 0;
-    Vector3 surface = hit.point + Vector3.up * floorHeight;
-    transform.position = new Vector3(transform.position.x, surface.y, transform.position.z);
-    isGrounded = true;
-    comingDown = false;
-}
-else
-{
-    isGrounded = false;
-}
-
-if (SwipeManager.swipeUp && isGrounded)
-{
-    PlayerJump();
-    velocity = Mathf.Sqrt(jumpHeight * -2 * (Physics.gravity.y * gravityScale));
-}
-
-if (!comingDown) //se non sta nello swipe down
-{
-    transform.Translate(new Vector3(0, velocity, 0) * Time.deltaTime);
-}
-else //se sta nello swipe down
-{
-    transform.Translate(new Vector3(0, -downFactor, 0) * Time.deltaTime);
-}
-
-// swipe down
-
-if (SwipeManager.swipeDown)
-{
-    if (!isGrounded) //sta nel salto, deve tornare a terra
+    private void PlayerJump()
     {
-        comingDown = true;
-        Debug.Log("down");
+        animator.SetTrigger("Jump");
     }
-    else //sta per terra deve scivolare
-    {
-        PlayerSlide();
-        Debug.Log("downGrounded");
-        StartCoroutine(Roll());
-    }
-}
-
-RenderSettings.skybox.SetFloat("_Rotation", Time.time * 1.0f); //rotate skybox
-}
-
-private void PlayerSlide()
-{
-    Debug.Log("Player sliding!");
-    animator.SetTrigger("Slide");
-}
-
-private void PlayerJump(){
-    animator.SetTrigger("Jump");
-}
 
 
     private void OnTriggerEnter(Collider other)
@@ -204,7 +202,7 @@ private void PlayerJump(){
 
             velocity = Mathf.Sqrt(jumpHeight * -2 * (Physics.gravity.y * gravityScale) * 0.5f);
 
-            
+
 
         }
 
@@ -212,11 +210,11 @@ private void PlayerJump(){
 
         {
 
- // Riproduci il suono
-        if (audioSource != null && trampolineSound != null)
-        {
-            audioSource.PlayOneShot(trampolineSound);
-        }
+            // Riproduci il suono
+            if (audioSource != null && trampolineSound != null)
+            {
+                audioSource.PlayOneShot(trampolineSound);
+            }
             comingDown = false;
 
             //gravityScale = tempGravityScale;
@@ -246,11 +244,9 @@ private void PlayerJump(){
         float height = collider.height;
         collider.height = 2.12f;
         collider.center.Set(collider.center.x, 1.04f, collider.center.z);
-        Debug.Log("Collider Small");
         yield return new WaitForSecondsRealtime(1.3f);
         collider.height = height;
         collider.center.Set(collider.center.x, y, collider.center.z);
-        Debug.Log("Collider Normal");
     }
 
     public void SetGameOver(bool gameOver)
