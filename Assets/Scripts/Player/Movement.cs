@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utilities;
 
 public class Movement : MonoBehaviour
 {
@@ -21,6 +22,17 @@ public class Movement : MonoBehaviour
     private float tempGravityScale;
     [SerializeField] LayerMask groundMask;
 
+    [Header("Timers")]
+    [SerializeField] float jumpDuration = 0.5f;
+    [SerializeField] float strafeDuration = 0.2f;
+
+    //  Timers
+    List<Timer> timers;
+    CountdownTimer jumpTimer;
+    CountdownTimer slideTimer;
+    CountdownTimer strafeRightTimer;
+    CountdownTimer strafeLeftTimer;
+
     public float cameraTurn;
     public float downFactor;
     public float velocity;
@@ -30,8 +42,6 @@ public class Movement : MonoBehaviour
 
     // state of the player
     public bool isGrounded;
-    public bool isSliding;
-    public bool isJumping;
     public bool comingDown;
     public bool onTheWater;
 
@@ -52,10 +62,29 @@ public class Movement : MonoBehaviour
         comingDown = false;
         collider = GetComponent<CapsuleCollider>();
         audioSource = GetComponent<AudioSource>();
+
+        // Setup timers
+        jumpTimer = new CountdownTimer(jumpDuration);
+        slideTimer = new CountdownTimer(slideDuration);
+        strafeRightTimer = new CountdownTimer(strafeDuration);
+        strafeLeftTimer = new CountdownTimer(strafeDuration);
+
+        timers = new List<Timer>(capacity: 2) { jumpTimer, slideTimer, strafeRightTimer, strafeLeftTimer };
+
+    }
+
+    private void HandleTimers()
+    {
+        foreach (var timer in timers)
+        {
+            timer.Tick(Time.deltaTime);
+        }
     }
 
     private void Update()
     {
+        HandleTimers();
+
         if (isGameOver || Time.timeScale == 0)
             return;
 
@@ -105,27 +134,31 @@ public class Movement : MonoBehaviour
         #region ChangeBools
         if (SwipeManager.swipeRight && !Lane3 && Lane1)
         {
-            Lane2 = true;
             Lane1 = false;
+            Lane2 = true;
             Lane3 = false;
+            strafeRightTimer.Start();
         }
         else if (SwipeManager.swipeLeft && Lane2 && Player.position.z <= 0.2f)
         {
             Lane1 = true;
             Lane2 = false;
             Lane3 = false;
+            strafeLeftTimer.Start();
         }
         else if (SwipeManager.swipeRight && Lane2 && Player.position.z >= -0.2f)
         {
-            Lane3 = true;
             Lane1 = false;
             Lane2 = false;
+            Lane3 = true;
+            strafeRightTimer.Start();
         }
         else if (SwipeManager.swipeLeft && !Lane1 && Lane3)
         {
-            Lane2 = true;
             Lane1 = false;
+            Lane2 = true;
             Lane3 = false;
+            strafeLeftTimer.Start();
         }
         #endregion
 
@@ -149,11 +182,11 @@ public class Movement : MonoBehaviour
         }
 
         // salto
-        if (isGrounded) isJumping = false; // Reset isJumping when grounded
+        if (isGrounded) jumpTimer.Stop(); // Reset isJumping when grounded
 
         if (SwipeManager.swipeUp && isGrounded)
         {
-            isJumping = true;
+            jumpTimer.Start();
             velocity = Mathf.Sqrt(jumpHeight * -2 * (Physics.gravity.y * gravityScale));
         }
 
@@ -189,9 +222,11 @@ public class Movement : MonoBehaviour
 
     void CheckAnimator()
     {
-        animator.SetBool("Jump", isJumping);
-        animator.SetBool("Slide", isSliding);
+        animator.SetBool("Jump", jumpTimer.IsRunning);
+        animator.SetBool("Slide", slideTimer.IsRunning);
         animator.SetBool("Floating", comingDown);
+        animator.SetBool("StrafeRight", strafeRightTimer.IsRunning);
+        animator.SetBool("StrafeLeft", strafeLeftTimer.IsRunning);
         //animator.SetBool("onTheWater", onTheWater && isGameOver);   // Uncomment if you have an onTheWater animation when dead
     }
 
@@ -250,7 +285,7 @@ public class Movement : MonoBehaviour
 
     IEnumerator Roll()
     {
-        isSliding = true;
+        slideTimer.Start();
         float y = collider.center.y;
         float height = collider.height;
         collider.height = 2.12f;
@@ -258,7 +293,6 @@ public class Movement : MonoBehaviour
         yield return new WaitForSecondsRealtime(slideDuration);
         collider.height = height;
         collider.center.Set(collider.center.x, y, collider.center.z);
-        isSliding = false;
     }
 
     public void SetGameOver(bool gameOver)

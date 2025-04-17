@@ -10212,9 +10212,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpHeight: 1.65
   gravityScale: 1.6
+  slideDuration: 0.8
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  jumpDuration: 0.5
+  strafeDuration: 0.2
   cameraTurn: 7.5
   downFactor: 10
   velocity: 0
