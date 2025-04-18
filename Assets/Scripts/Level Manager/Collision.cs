@@ -56,6 +56,8 @@ public class Collision : MonoBehaviour
         {
             if (manager.GetLives() < 2)
             {
+                shake.camShake();
+                Destroy(other.gameObject);
                 currentScore = scoreManager.GetScoreInt(); // Ottieni il punteggio corrente
                 GameOver(); // Passa il punteggio corrente al Game Over Manager
             }

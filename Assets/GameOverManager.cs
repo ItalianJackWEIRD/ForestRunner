@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections;
+using System.Collections.Generic;
 
 public class GameOverManager : MonoBehaviour
 {
@@ -37,8 +39,15 @@ public class GameOverManager : MonoBehaviour
 
     public void ShowGameOver(int currentScore)
     {
-        movement.isGameOver = true;
-        
+        StartCoroutine(GameOverPause(3f, currentScore));
+    }
+
+    IEnumerator GameOverPause(float seconds, int currentScore)
+    {
+        movement.SetGameOver(true);
+        // Ferma il movimento del giocatore per 3 secondi   (per permettere di vedere la animazione di Game Over)
+        yield return new WaitForSecondsRealtime(seconds);
+
         // Aggiorna il punteggio attuale e il punteggio massimo
         int highScore = PlayerPrefs.GetInt("HighScore", 0);
         if (currentScore > highScore)

@@ -86,7 +86,11 @@ public class Movement : MonoBehaviour
         HandleTimers();
 
         if (isGameOver || Time.timeScale == 0)
+        {
+            animator.SetBool("GameOver", isGameOver);
+            animator.SetBool("GameOverWater", onTheWater && isGameOver);
             return;
+        }
 
         GameObject check = GameObject.FindGameObjectWithTag("Box");
 
@@ -227,7 +231,6 @@ public class Movement : MonoBehaviour
         animator.SetBool("Floating", comingDown);
         animator.SetBool("StrafeRight", strafeRightTimer.IsRunning);
         animator.SetBool("StrafeLeft", strafeLeftTimer.IsRunning);
-        //animator.SetBool("onTheWater", onTheWater && isGameOver);   // Uncomment if you have an onTheWater animation when dead
     }
 
 
@@ -301,5 +304,10 @@ public class Movement : MonoBehaviour
     public void SetGameOver(bool gameOver)
     {
         isGameOver = gameOver;
+    }
+
+    public bool isGameOverCheck()
+    {
+        return isGameOver;
     }
 }

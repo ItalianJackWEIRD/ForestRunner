@@ -33,6 +33,8 @@ public class Boxes : MonoBehaviour
         {
             if (manager.GetLives() < 2)
             {
+                shake.camShake();
+                destroyBoxNoCoin();
                 ShowGameOver();
             }
             else
