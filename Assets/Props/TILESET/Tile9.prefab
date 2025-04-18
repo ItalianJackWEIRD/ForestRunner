@@ -14023,6 +14023,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RiverQuadSolo (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1434824503763191461, guid: 1cd62cdae207c8c4e86c085c381fa381,
+        type: 3}
+      propertyPath: m_TagString
+      value: River
+      objectReference: {fileID: 0}
     - target: {fileID: 9168438741222075711, guid: 1cd62cdae207c8c4e86c085c381fa381,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -18162,6 +18167,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RiverQuadSolo (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434824503763191461, guid: 1cd62cdae207c8c4e86c085c381fa381,
+        type: 3}
+      propertyPath: m_TagString
+      value: River
       objectReference: {fileID: 0}
     - target: {fileID: 9168438741222075711, guid: 1cd62cdae207c8c4e86c085c381fa381,
         type: 3}
@@ -35649,6 +35659,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RiverQuadSolo
       objectReference: {fileID: 0}
+    - target: {fileID: 1434824503763191461, guid: 1cd62cdae207c8c4e86c085c381fa381,
+        type: 3}
+      propertyPath: m_TagString
+      value: River
+      objectReference: {fileID: 0}
     - target: {fileID: 9168438741222075711, guid: 1cd62cdae207c8c4e86c085c381fa381,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -36514,6 +36529,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RiverQuadSolo (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434824503763191461, guid: 1cd62cdae207c8c4e86c085c381fa381,
+        type: 3}
+      propertyPath: m_TagString
+      value: River
       objectReference: {fileID: 0}
     - target: {fileID: 9168438741222075711, guid: 1cd62cdae207c8c4e86c085c381fa381,
         type: 3}
@@ -46820,6 +46840,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RiverQuadSolo (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434824503763191461, guid: 1cd62cdae207c8c4e86c085c381fa381,
+        type: 3}
+      propertyPath: m_TagString
+      value: River
       objectReference: {fileID: 0}
     - target: {fileID: 9168438741222075711, guid: 1cd62cdae207c8c4e86c085c381fa381,
         type: 3}

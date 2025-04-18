@@ -88,7 +88,6 @@ public class Movement : MonoBehaviour
         if (isGameOver || Time.timeScale == 0)
         {
             animator.SetBool("GameOver", isGameOver);
-            animator.SetBool("GameOverWater", onTheWater && isGameOver);
             return;
         }
 
