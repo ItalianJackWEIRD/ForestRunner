@@ -288,11 +288,14 @@ public class Movement : MonoBehaviour
         slideTimer.Start();
         float y = collider.center.y;
         float height = collider.height;
-        collider.height = 2.12f;
-        collider.center.Set(collider.center.x, 1.04f, collider.center.z);
+        collider.height = 2.72f;
+        Vector3 center = collider.center;
+        center.y = 1.04f;
+        collider.center = center;
         yield return new WaitForSecondsRealtime(slideDuration);
         collider.height = height;
-        collider.center.Set(collider.center.x, y, collider.center.z);
+        center.y = y;
+        collider.center = center;
     }
 
     public void SetGameOver(bool gameOver)

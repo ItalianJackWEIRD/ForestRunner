@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    
+
     private Animator animator;
     public SwipeManager swipeManager;
 
     public float timerForDestroyingBoxes = 1;
 
     private bool canAttack = true;
-    public  bool attacking = false;
+    public bool attacking = false;
 
     public float timerForAttack = 1;
 
@@ -23,7 +23,10 @@ public class Attack : MonoBehaviour
 
     // Update is called once per frame
     private void Update()
-    {   
+    {
+        // animator
+        animator.SetBool("Attack", attacking);
+
         if (Input.GetMouseButtonDown(0))
         {
             swipeManager.tap = true;
@@ -45,7 +48,6 @@ public class Attack : MonoBehaviour
     {
         canAttack = false;
         Invoke("ResetCanAttack", timerForAttack);
-        animator.SetTrigger("Attack");
         attacking = true;
         Invoke("ResetCanDestroyBoxes", timerForDestroyingBoxes);
     }
@@ -60,7 +62,7 @@ public class Attack : MonoBehaviour
         canAttack = true;
     }
 
-    public bool canDestroy ()
+    public bool canDestroy()
     {
         return attacking;
     }
