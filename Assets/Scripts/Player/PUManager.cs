@@ -8,6 +8,8 @@ public class PUManager : MonoBehaviour
     public bool powerUp2 = false;   // invincibile
     public bool powerUp3 = false;   // jump boost
 
+    private Animator animator;
+
     public int PlayerLives;
     private int PlayerLivesTemp;
 
@@ -23,6 +25,7 @@ public class PUManager : MonoBehaviour
     private void Start()
     {
         mov = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
+        animator = GetComponentInChildren<Animator>();
 
         // Ottieni il componente AudioSource sullo stesso GameObject
         audioSource = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
@@ -58,6 +61,7 @@ public class PUManager : MonoBehaviour
     public void LifeMinus1()
     {
         PlayerLives--;
+        animator.SetTrigger("Hit");
     }
 
     public void LifePlus1()

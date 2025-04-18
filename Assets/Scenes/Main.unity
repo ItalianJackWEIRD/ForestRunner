@@ -10361,7 +10361,7 @@ MonoBehaviour:
   powerUp1: 0
   powerUp2: 0
   powerUp3: 0
-  PlayerLives: 1
+  PlayerLives: 2
   secondsToWait: 12
   powerUp1Sound: {fileID: 8300000, guid: b8510d07f64011e4dbf572bb31692481, type: 3}
   powerUp2Sound: {fileID: 8300000, guid: b8510d07f64011e4dbf572bb31692481, type: 3}
