@@ -89828,7 +89828,7 @@ PrefabInstance:
     - target: {fileID: 3931240174871465557, guid: c5a72384de1f967468c3b6249b160dbc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.97
+      value: -1.05
       objectReference: {fileID: 0}
     - target: {fileID: 3931240174871465557, guid: c5a72384de1f967468c3b6249b160dbc,
         type: 3}
@@ -89838,7 +89838,7 @@ PrefabInstance:
     - target: {fileID: 3931240174871465557, guid: c5a72384de1f967468c3b6249b160dbc,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.13
+      value: 4.07
       objectReference: {fileID: 0}
     - target: {fileID: 3931240174871465557, guid: c5a72384de1f967468c3b6249b160dbc,
         type: 3}
@@ -123442,7 +123442,7 @@ PrefabInstance:
     - target: {fileID: 3931240174871465557, guid: c5a72384de1f967468c3b6249b160dbc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.97
+      value: -1.05
       objectReference: {fileID: 0}
     - target: {fileID: 3931240174871465557, guid: c5a72384de1f967468c3b6249b160dbc,
         type: 3}
@@ -123452,7 +123452,7 @@ PrefabInstance:
     - target: {fileID: 3931240174871465557, guid: c5a72384de1f967468c3b6249b160dbc,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.78
+      value: 1.72
       objectReference: {fileID: 0}
     - target: {fileID: 3931240174871465557, guid: c5a72384de1f967468c3b6249b160dbc,
         type: 3}
@@ -140378,7 +140378,7 @@ PrefabInstance:
     - target: {fileID: 3931240174871465557, guid: c5a72384de1f967468c3b6249b160dbc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.97
+      value: -1.05
       objectReference: {fileID: 0}
     - target: {fileID: 3931240174871465557, guid: c5a72384de1f967468c3b6249b160dbc,
         type: 3}
@@ -140388,7 +140388,7 @@ PrefabInstance:
     - target: {fileID: 3931240174871465557, guid: c5a72384de1f967468c3b6249b160dbc,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.32
+      value: 6.26
       objectReference: {fileID: 0}
     - target: {fileID: 3931240174871465557, guid: c5a72384de1f967468c3b6249b160dbc,
         type: 3}

@@ -107,13 +107,13 @@ public class Movement : MonoBehaviour
         Vector3 targetPosition = Player.position;
         Transform cameraTransform = GameObject.Find("CamFollow").transform;
 
-        if (Lane3 && Player.position.z < 1.1f)
+        if (Lane3 && Player.position.z < 1.25f)
         {
-            targetPosition.z = 1.1f;
+            targetPosition.z = 1.25f;
         }
-        else if (Lane1 && Player.position.z > -1.1f)
+        else if (Lane1 && Player.position.z > -1.25f)
         {
-            targetPosition.z = -1.1f;
+            targetPosition.z = -1.25f;
         }
         else if (Lane2)
         {

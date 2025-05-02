@@ -82,7 +82,7 @@ public class LevelGenerator : MonoBehaviour
             UpdateScore();
             AdjustSpeed();
         }
-
+    
         if (transform.position.x >= Index)
         {
             for (int i = 0; i < 3; i++) // Ciclo per spawnare 3 tile
@@ -99,6 +99,7 @@ public class LevelGenerator : MonoBehaviour
 
                 nextTilePosition -= tileSpacing; // Aggiorna la posizione per il prossimo tile
             }
+            nextTilePosition = -25f; // Reset della posizione per il prossimo batch di tile
 
             Index += tileSpacing * 3; // Aggiorna l'indice per il prossimo batch
         }
