@@ -43,6 +43,8 @@ public class LevelGenerator : MonoBehaviour
     public GameObject StartTile2;
     public GameObject StartTile3;
     public GameObject StartTile4;
+    public GameObject ShopTile1;
+    public GameObject ShopTile2;
 
     private float Index = 0;
     private int lastRandom;
@@ -74,6 +76,9 @@ public class LevelGenerator : MonoBehaviour
     private float nextTilePosition = -25f; // Posizione iniziale
     private float tileSpacing = 9f; // Distanza tra i tile
 
+    private bool shop1 = false;
+    private bool shop2 = false;
+
     private void Update()
     {
         if (!mov.isGameOverCheck())
@@ -82,27 +87,77 @@ public class LevelGenerator : MonoBehaviour
             UpdateScore();
             AdjustSpeed();
         }
-    
+
         if (transform.position.x >= Index)
         {
-            for (int i = 0; i < 3; i++) // Ciclo per spawnare 3 tile
+            if (shop1)
             {
-                int randomTileIndex = Random.Range(0, random);
-                while (randomTileIndex == lastRandom)
+                //Genera i primi 3 tile dello shop
+                for (int i = 0; i < 3; i++) // Ciclo per spawnare 3 tile
                 {
-                    randomTileIndex = Random.Range(0, random);
+                    GameObject newTile = Instantiate(ShopTile1, transform);
+                    newTile.transform.position = new Vector3(nextTilePosition, -0.25f, 0);
+
+                    nextTilePosition -= tileSpacing; // Aggiorna la posizione per il prossimo tile
                 }
-                lastRandom = randomTileIndex;
+                nextTilePosition = -25f; // Reset della posizione per il prossimo batch di tile
 
-                GameObject newTile = Instantiate(GetRandomTile(randomTileIndex), transform);
-                newTile.transform.position = new Vector3(nextTilePosition, -0.25f, 0);
-
-                nextTilePosition -= tileSpacing; // Aggiorna la posizione per il prossimo tile
+                shop1 = false; // Reset dello shop1
+                shop2 = true; // Attiva lo shop2
             }
-            nextTilePosition = -25f; // Reset della posizione per il prossimo batch di tile
+            else if (shop2)
+            {
+                //Genera i secondi 3 tile dello shop
+                GameObject newTile1 = Instantiate(ShopTile2, transform);
+                newTile1.transform.position = new Vector3(nextTilePosition, -0.25f, 0);
+                nextTilePosition -= tileSpacing; // Aggiorna la posizione per il prossimo tile
+
+                for (int i = 0; i < 2; i++) // Ciclo per spawnare 3 tile
+                {
+                    GameObject newTile = Instantiate(ShopTile1, transform);
+                    newTile.transform.position = new Vector3(nextTilePosition, -0.25f, 0);
+
+                    nextTilePosition -= tileSpacing; // Aggiorna la posizione per il prossimo tile
+                }
+                nextTilePosition = -25f; // Reset della posizione per il prossimo batch di tile
+
+                shop2 = false; // Reset dello shop2
+            }
+            else
+            {
+                for (int i = 0; i < 3; i++) // Ciclo per spawnare 3 tile
+                {
+                    int randomTileIndex = Random.Range(0, random);
+                    while (randomTileIndex == lastRandom)
+                    {
+                        randomTileIndex = Random.Range(0, random);
+                    }
+                    lastRandom = randomTileIndex;
+
+                    GameObject newTile = Instantiate(GetRandomTile(randomTileIndex), transform);
+                    newTile.transform.position = new Vector3(nextTilePosition, -0.25f, 0);
+
+                    nextTilePosition -= tileSpacing; // Aggiorna la posizione per il prossimo tile
+                }
+                nextTilePosition = -25f; // Reset della posizione per il prossimo batch di tile
+            }
 
             Index += tileSpacing * 3; // Aggiorna l'indice per il prossimo batch
         }
+
+        if (CheckForShop(GetScore())) // Se il punteggio è 250 o 750 ecc ... genera shop
+        {
+            shop1 = true;
+        }
+    }
+
+    private bool CheckForShop(int score)
+    {
+        if (score >= 250 && (score - 250) % 500 == 0)
+        {
+            return true;
+        }
+        return false;
     }
 
     private GameObject GetRandomTile(int index)
