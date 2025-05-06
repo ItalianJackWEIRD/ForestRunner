@@ -10,6 +10,17 @@ public class ShopMenu : MonoBehaviour
     private GameObject canvasMenu; // Riferimento al giocatore
     private GameObject shopMenu; // Riferimento al pannello del negozio
 
+    private bool shop = false; // Variabile per tenere traccia dello stato del negozio
+
+    private GameObject buttonLife;
+    private GameObject buttonLife_;
+    private GameObject buttonPU;
+    private GameObject buttonPU_;
+    private GameObject buttonX2;
+    private GameObject buttonX2_;
+    private GameObject buttonSlow;
+    private GameObject buttonSlow_;
+
     private void Start()
     {
         canvasMenu = GameObject.Find("CanvasMenu"); // Trova il CanvasMenu nella scena
@@ -32,6 +43,81 @@ public class ShopMenu : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        // aggiorni la visual dello shop
+        if (shop)
+            updateShopUI();
+    }
+
+    // Qui puoi aggiornare l'interfaccia utente del negozio se necessario
+    private void updateShopUI()
+    {
+        // Check per ogni bottone se è verde o rosso (Puoi o non puoi comprare) => attiva o disattiva il bottone
+
+        if (CheckForLife())
+        {
+            buttonLife.SetActive(true);
+            buttonLife_.SetActive(false);
+        }
+        else
+        {
+            buttonLife.SetActive(false);
+            buttonLife_.SetActive(true);
+        }
+
+        if (CheckForPU())
+        {
+            buttonPU.SetActive(true);
+            buttonPU_.SetActive(false);
+        }
+        else
+        {
+            buttonPU.SetActive(false);
+            buttonPU_.SetActive(true);
+        }
+
+        if (CheckForX2())
+        {
+            buttonX2.SetActive(true);
+            buttonX2_.SetActive(false);
+        }
+        else
+        {
+            buttonX2.SetActive(false);
+            buttonX2_.SetActive(true);
+        }
+
+        if (CheckForSlow())
+        {
+            buttonSlow.SetActive(true);
+            buttonSlow_.SetActive(false);
+        }
+        else
+        {
+            buttonSlow.SetActive(false);
+            buttonSlow_.SetActive(true);
+        }
+
+    }
+
+    private bool CheckForLife()
+    {
+        // Controlla se il giocatore ha abbastanza monete o max vite
+    }
+    private bool CheckForPU()
+    {
+        // Controlla se il giocatore ha abbastanza monete o se ha gia comprato un powerup
+    }
+    private bool CheckForX2()
+    {
+        // Controlla se il giocatore ha abbastanza monete o ha gia comprato un x2
+    }
+    private bool CheckForSlow()
+    {
+        // Controlla se il giocatore ha abbastanza monete o ha gia comprato un slow
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Shop")) // Controlla se il GameObject ha il tag "Shop"
@@ -50,12 +136,24 @@ public class ShopMenu : MonoBehaviour
             return;
         }
         shopMenu.SetActive(true); // Mostra il pannello del negozio
+        shop = true; // Imposta lo stato del negozio su aperto
         Time.timeScale = 0;
+
+        // Assegna i riferimenti ai bottoni quando il menu è attivato
+        buttonLife = shopMenu.transform.Find("ButtonLife")?.gameObject;
+        buttonLife_ = shopMenu.transform.Find("ButtonLife_")?.gameObject;
+        buttonPU = shopMenu.transform.Find("ButtonPU")?.gameObject;
+        buttonPU_ = shopMenu.transform.Find("ButtonPU_")?.gameObject;
+        buttonX2 = shopMenu.transform.Find("ButtonX2")?.gameObject;
+        buttonX2_ = shopMenu.transform.Find("ButtonX2_")?.gameObject;
+        buttonSlow = shopMenu.transform.Find("ButtonSlow")?.gameObject;
+        buttonSlow_ = shopMenu.transform.Find("ButtonSlow_")?.gameObject;
     }
 
     public void CloseShop()
     {
         shopMenu.SetActive(false); // Nascondi il pannello del negozio
+        shop = false; // Imposta lo stato del negozio su chiuso
         GameManager.Instance.StartCountdown();
     }
 }
