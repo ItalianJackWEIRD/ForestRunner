@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class ShopMenu : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class ShopMenu : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) // Controlla se il GameObject ha il tag "Player"
+        if (other.CompareTag("Shop")) // Controlla se il GameObject ha il tag "Shop"
         {
             Debug.Log("Player entered the shop area.");
             // Qui puoi aggiungere il codice per aprire il negozio

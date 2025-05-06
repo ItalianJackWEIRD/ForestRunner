@@ -6,6 +6,7 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     public float moveSpeed;
+    private float tempMoveSpeed = 0;
     public float advancementScore = 0;
 
     public int GetScore() { return Mathf.RoundToInt(advancementScore); }  // getter per il punteggio
@@ -153,7 +154,7 @@ public class LevelGenerator : MonoBehaviour
 
     private bool CheckForShop(int score)
     {
-        if (score >= 250 && (score - 250) % 500 == 0)
+        if (score == 50)
         {
             return true;
         }
@@ -176,4 +177,21 @@ public class LevelGenerator : MonoBehaviour
         float targetSpeed = Mathf.Lerp(4f, 10f, Mathf.InverseLerp(0f, 1500f, advancementScore));    //setta questi parametri per gestire la velocità
         moveSpeed = targetSpeed;
     }
+
+    /* Funzione da chiamare dallo ShopItems per sloware la velocità */
+    public IEnumerator SlowSpeed()
+    {
+        tempMoveSpeed = moveSpeed; // Salva la velocità attuale
+        moveSpeed = 4f; // Imposta la velocità a 4f per 40 secondi
+        yield return new WaitForSeconds(40f); // Aspetta 40 secondi
+        moveSpeed = tempMoveSpeed; // Ripristina la velocità originale   
+    }
+
+    public IEnumerator ScoreX2()
+    {
+        scoreRate = 500 / 90f; // Imposta il punteggio a 500 ogni 90 secondi
+        yield return new WaitForSeconds(40f); // Aspetta 40 secondi
+        scoreRate = 250 / 90f; // Ripristina il punteggio a 250 ogni 90 secondi
+    }
+
 }

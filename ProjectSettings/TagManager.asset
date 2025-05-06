@@ -16,6 +16,7 @@ TagManager:
   - Tramp+
   - ScoreManager
   - DestroyedBox
+  - Shop
   layers:
   - Default
   - TransparentFX

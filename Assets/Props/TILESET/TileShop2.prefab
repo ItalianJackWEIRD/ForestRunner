@@ -2229,10 +2229,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8423692377391310989}
   - component: {fileID: 3144790929177073201}
-  - component: {fileID: 4901261812602052549}
   m_Layer: 0
   m_Name: ColliderShop
-  m_TagString: Untagged
+  m_TagString: Shop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2273,19 +2272,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 10.087691, z: 4.831777}
   m_Center: {x: 0, y: 3.6002126, z: -0.3434629}
---- !u!114 &4901261812602052549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5223171570051578424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a9d5c48b59563a47879fd024a876c0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shopPanel: {fileID: 0}
 --- !u!1 &5371388168229630973
 GameObject:
   m_ObjectHideFlags: 0
