@@ -53,6 +53,9 @@ public class LevelGenerator : MonoBehaviour
     public bool scoreX2 { get; private set; }
     public bool slowSpeed { get; private set; }
 
+    private AudioSource audioSource; // Componente AudioSource
+    public AudioClip shopItem; // Clip audio per l'apertura del negozio
+
 
     private void Start()
     {
@@ -79,6 +82,8 @@ public class LevelGenerator : MonoBehaviour
 
         GameObject StartPlane6 = Instantiate(StartTile6, transform);
         StartPlane6.transform.position = new Vector3(-33, -0.25f, 0); */
+
+        audioSource = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
     }
 
     private float nextTilePosition = -25f; // Posizione iniziale
@@ -161,7 +166,7 @@ public class LevelGenerator : MonoBehaviour
 
     private bool CheckForShop(int score)
     {
-        if (score >= 250 && (score - 250) % 500 == 0)
+        if (score == 50)       // score >= 250 && (score - 250) % 500 == 0 "formula finale"
         {
             return true;
         }
@@ -191,6 +196,7 @@ public class LevelGenerator : MonoBehaviour
         slowSpeed = true; // Imposta la velocità rallentata a true
         tempMoveSpeed = moveSpeed; // Salva la velocità attuale
         moveSpeed = 4f; // Imposta la velocità a 4f per 40 secondi
+        PlaySound(shopItem); // Riproduci il suono di apertura del negozio
         yield return new WaitForSeconds(40f); // Aspetta 40 secondi
         moveSpeed = tempMoveSpeed; // Ripristina la velocità originale   
         slowSpeed = false; // Imposta la velocità rallentata a false
@@ -200,9 +206,18 @@ public class LevelGenerator : MonoBehaviour
     {
         scoreX2 = true; // Imposta il punteggio raddoppiato a true
         scoreRate = 500 / 90f; // Imposta il punteggio a 500 ogni 90 secondi
+        PlaySound(shopItem); // Riproduci il suono di apertura del negozio
         yield return new WaitForSeconds(40f); // Aspetta 40 secondi
         scoreRate = 250 / 90f; // Ripristina il punteggio a 250 ogni 90 secondi
         scoreX2 = false; // Imposta il punteggio raddoppiato a false
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
     }
 
 }

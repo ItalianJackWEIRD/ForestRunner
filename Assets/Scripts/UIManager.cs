@@ -11,6 +11,9 @@ public class UIManager : MonoBehaviour
     public Image potionCoinIcon; // Associa questo campo con l'immagine dell'icona della pozione di monete
     public Image potionJumpIcon; // Associa questo campo con l'immagine dell'icona della pozione di salto
 
+    public Image scoreX2;
+    public Image slowSpeed;
+
     public Score score; // Associa questo campo con il componente Score del Player
     public PUManager manager; // Associa questo campo con il componente PUManager del Player
     public LevelGenerator levelGenerator; // Associa questo campo con il componente LevelGenerator del Player
@@ -21,6 +24,8 @@ public class UIManager : MonoBehaviour
         potionHpIcon.gameObject.SetActive(false);
         potionCoinIcon.gameObject.SetActive(false);
         potionJumpIcon.gameObject.SetActive(false);
+        scoreX2.gameObject.SetActive(false);
+        slowSpeed.gameObject.SetActive(false);
 
         levelGenerator = GameObject.FindGameObjectWithTag("GameController").GetComponent<LevelGenerator>();
     }
@@ -36,5 +41,8 @@ public class UIManager : MonoBehaviour
         potionHpIcon.gameObject.SetActive(manager.Get2());
         potionCoinIcon.gameObject.SetActive(manager.Get1());
         potionJumpIcon.gameObject.SetActive(manager.Get3());
+
+        scoreX2.gameObject.SetActive(levelGenerator.scoreX2);
+        slowSpeed.gameObject.SetActive(levelGenerator.slowSpeed);
     }
 }

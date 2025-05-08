@@ -25,6 +25,9 @@ public class ShopMenu : MonoBehaviour
     private Score score; // Riferimento al punteggio
     private LevelGenerator levelGenerator; // Riferimento al LevelGenerator
 
+    private AudioSource audioSource; // Componente AudioSource
+    public AudioClip openShop; // Clip audio per l'apertura del negozio
+
     private void Start()
     {
         canvasMenu = GameObject.Find("CanvasMenu"); // Trova il CanvasMenu nella scena
@@ -49,6 +52,7 @@ public class ShopMenu : MonoBehaviour
         manager = GameObject.FindGameObjectWithTag("Player").GetComponent<PUManager>();
         score = GameObject.FindGameObjectWithTag("Player").GetComponent<Score>(); // Trova il punteggio nella scena
         levelGenerator = GameObject.FindGameObjectWithTag("GameController").GetComponent<LevelGenerator>(); // Trova il LevelGenerator nella scena
+        audioSource = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
     }
 
     void Update()
@@ -147,6 +151,8 @@ public class ShopMenu : MonoBehaviour
         shop = true; // Imposta lo stato del negozio su aperto
         Time.timeScale = 0;
 
+        PlaySound(openShop); // Riproduci il suono di apertura del negozio
+
         // Assegna i riferimenti ai bottoni quando il menu è attivato
         buttonLife = shopMenu.transform.Find("ButtonLife")?.gameObject;
         buttonLife_ = shopMenu.transform.Find("ButtonLife_")?.gameObject;
@@ -163,5 +169,13 @@ public class ShopMenu : MonoBehaviour
         shopMenu.SetActive(false); // Nascondi il pannello del negozio
         shop = false; // Imposta lo stato del negozio su chiuso
         GameManager.Instance.StartCountdown();
+    }
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
     }
 }

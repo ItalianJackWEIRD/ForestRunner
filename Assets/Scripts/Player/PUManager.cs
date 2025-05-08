@@ -20,6 +20,7 @@ public class PUManager : MonoBehaviour
     public AudioClip powerUp1Sound;  // Campo pubblico per il suono di PowerUp1
     public AudioClip powerUp2Sound;  // Campo pubblico per il suono di PowerUp2
     public AudioClip powerUp3Sound;  // Campo pubblico per il suono di PowerUp3
+    public AudioClip lifeSound;  // Campo pubblico per il suono di PowerUp4
     private AudioSource audioSource; // Componente AudioSource
 
     private void Start()
@@ -67,6 +68,7 @@ public class PUManager : MonoBehaviour
     public void LifePlus1()
     {
         PlayerLives++;
+        PlaySound(lifeSound);  
     }
 
     public void Set2()
