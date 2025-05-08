@@ -124,4 +124,9 @@ public class PUManager : MonoBehaviour
             audioSource.PlayOneShot(clip);
         }
     }
+
+    public bool IsPowerUpActive()
+    {
+        return powerUp1 || powerUp2 || powerUp3;
+    }
 }

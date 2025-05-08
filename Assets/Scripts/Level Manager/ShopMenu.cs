@@ -21,6 +21,10 @@ public class ShopMenu : MonoBehaviour
     private GameObject buttonSlow;
     private GameObject buttonSlow_;
 
+    private PUManager manager; // Riferimento al PUManager
+    private Score score; // Riferimento al punteggio
+    private LevelGenerator levelGenerator; // Riferimento al LevelGenerator
+
     private void Start()
     {
         canvasMenu = GameObject.Find("CanvasMenu"); // Trova il CanvasMenu nella scena
@@ -41,6 +45,10 @@ public class ShopMenu : MonoBehaviour
         {
             Debug.Log("CanvasMenu non trovato!");
         }
+
+        manager = GameObject.FindGameObjectWithTag("Player").GetComponent<PUManager>();
+        score = GameObject.FindGameObjectWithTag("Player").GetComponent<Score>(); // Trova il punteggio nella scena
+        levelGenerator = GameObject.FindGameObjectWithTag("GameController").GetComponent<LevelGenerator>(); // Trova il LevelGenerator nella scena
     }
 
     void Update()
@@ -103,19 +111,19 @@ public class ShopMenu : MonoBehaviour
 
     private bool CheckForLife()
     {
-        // Controlla se il giocatore ha abbastanza monete o max vite
+        return score.GetScoreInt() >= 100 && manager.GetLives() < 4; // Controlla se il giocatore ha abbastanza monete e meno di 4 vite
     }
     private bool CheckForPU()
     {
-        // Controlla se il giocatore ha abbastanza monete o se ha gia comprato un powerup
+        return score.GetScoreInt() >= 200 && !manager.IsPowerUpActive(); // Controlla se il giocatore ha abbastanza monete e non ha gia comprato un powerup
     }
     private bool CheckForX2()
     {
-        // Controlla se il giocatore ha abbastanza monete o ha gia comprato un x2
+        return score.GetScoreInt() >= 500 && !levelGenerator.scoreX2; // Controlla se il giocatore ha abbastanza monete e non ha gia comprato un x2
     }
     private bool CheckForSlow()
     {
-        // Controlla se il giocatore ha abbastanza monete o ha gia comprato un slow
+        return score.GetScoreInt() >= 500 && !levelGenerator.slowSpeed; // Controlla se il giocatore ha abbastanza monete e non ha gia comprato un slow
     }
 
     private void OnTriggerEnter(Collider other)

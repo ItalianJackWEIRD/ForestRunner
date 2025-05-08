@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    private int ScoreInt = 0;
+    public int ScoreInt = 0;
 
     public AudioClip collectSoundClip;  // Campo pubblico per il suono di raccolta
     private AudioSource audioSource;    // Componente AudioSource

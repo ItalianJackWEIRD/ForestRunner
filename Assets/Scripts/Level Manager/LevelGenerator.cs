@@ -50,9 +50,16 @@ public class LevelGenerator : MonoBehaviour
     private float Index = 0;
     private int lastRandom;
 
+    public bool scoreX2 { get; private set; }
+    public bool slowSpeed { get; private set; }
+
+
     private void Start()
     {
         mov = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
+
+        scoreX2 = false; // Inizializza il punteggio raddoppiato a false
+        slowSpeed = false; // Inizializza la velocità rallentata a false
 
         //create 5 tile first game
         GameObject StartPlane1 = Instantiate(StartTile1, transform);
@@ -154,7 +161,7 @@ public class LevelGenerator : MonoBehaviour
 
     private bool CheckForShop(int score)
     {
-        if (score == 50)
+        if (score >= 250 && (score - 250) % 500 == 0)
         {
             return true;
         }
@@ -181,17 +188,21 @@ public class LevelGenerator : MonoBehaviour
     /* Funzione da chiamare dallo ShopItems per sloware la velocità */
     public IEnumerator SlowSpeed()
     {
+        slowSpeed = true; // Imposta la velocità rallentata a true
         tempMoveSpeed = moveSpeed; // Salva la velocità attuale
         moveSpeed = 4f; // Imposta la velocità a 4f per 40 secondi
         yield return new WaitForSeconds(40f); // Aspetta 40 secondi
         moveSpeed = tempMoveSpeed; // Ripristina la velocità originale   
+        slowSpeed = false; // Imposta la velocità rallentata a false
     }
 
     public IEnumerator ScoreX2()
     {
+        scoreX2 = true; // Imposta il punteggio raddoppiato a true
         scoreRate = 500 / 90f; // Imposta il punteggio a 500 ogni 90 secondi
         yield return new WaitForSeconds(40f); // Aspetta 40 secondi
         scoreRate = 250 / 90f; // Ripristina il punteggio a 250 ogni 90 secondi
+        scoreX2 = false; // Imposta il punteggio raddoppiato a false
     }
 
 }
