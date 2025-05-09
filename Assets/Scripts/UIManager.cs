@@ -33,7 +33,12 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         // Aggiorna il testo del punteggio e delle vite
-        coinText.text = score.GetScore();
+        if (score.GetScoreInt() < 10)
+            coinText.text = string.Format("  {0}", score.GetScore());
+        else if (score.GetScoreInt() < 100)
+            coinText.text = string.Format(" {0}", score.GetScore());
+        else
+            coinText.text = score.GetScore();
         lifeText.text = manager.GetLives().ToString();
         scoreText.text = string.Format("{0}", levelGenerator.GetScore());
 

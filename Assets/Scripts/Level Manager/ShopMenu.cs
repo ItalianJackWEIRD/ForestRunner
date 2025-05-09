@@ -115,19 +115,19 @@ public class ShopMenu : MonoBehaviour
 
     private bool CheckForLife()
     {
-        return score.GetScoreInt() >= 100 && manager.GetLives() < 4; // Controlla se il giocatore ha abbastanza monete e meno di 4 vite
+        return score.GetScoreInt() >= 50 && manager.GetLives() < 4; // Controlla se il giocatore ha abbastanza monete e meno di 4 vite
     }
     private bool CheckForPU()
     {
-        return score.GetScoreInt() >= 200 && !manager.IsPowerUpActive(); // Controlla se il giocatore ha abbastanza monete e non ha gia comprato un powerup
+        return score.GetScoreInt() >= 50 && !manager.IsPowerUpActive(); // Controlla se il giocatore ha abbastanza monete e non ha gia comprato un powerup
     }
     private bool CheckForX2()
     {
-        return score.GetScoreInt() >= 500 && !levelGenerator.scoreX2; // Controlla se il giocatore ha abbastanza monete e non ha gia comprato un x2
+        return score.GetScoreInt() >= 100 && !levelGenerator.scoreX2; // Controlla se il giocatore ha abbastanza monete e non ha gia comprato un x2
     }
     private bool CheckForSlow()
     {
-        return score.GetScoreInt() >= 500 && !levelGenerator.slowSpeed; // Controlla se il giocatore ha abbastanza monete e non ha gia comprato un slow
+        return score.GetScoreInt() >= 200 && !levelGenerator.slowSpeed; // Controlla se il giocatore ha abbastanza monete e non ha gia comprato un slow
     }
 
     private void OnTriggerEnter(Collider other)
