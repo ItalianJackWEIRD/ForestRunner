@@ -2241,6 +2241,7 @@ GameObject:
   - component: {fileID: 498570547}
   - component: {fileID: 498570546}
   - component: {fileID: 498570545}
+  - component: {fileID: 498570548}
   m_Layer: 5
   m_Name: ButtonLife_
   m_TagString: Untagged
@@ -2313,7 +2314,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 498570546}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 498570548}
+        m_TargetAssemblyTypeName: LockedButton, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &498570546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2352,6 +2365,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 498570543}
   m_CullTransparentMesh: 1
+--- !u!114 &498570548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498570543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d325a6d581b27494baee33ac936c1796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 27d1380a5551bc54b8762c1b84e4163c, type: 3}
 --- !u!1 &505450199
 GameObject:
   m_ObjectHideFlags: 0
@@ -10644,6 +10670,7 @@ GameObject:
   - component: {fileID: 1207849502}
   - component: {fileID: 1207849501}
   - component: {fileID: 1207849500}
+  - component: {fileID: 1207849503}
   m_Layer: 5
   m_Name: ButtonX2_
   m_TagString: Untagged
@@ -10716,7 +10743,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1207849501}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1207849503}
+        m_TargetAssemblyTypeName: LockedButton, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1207849501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10755,6 +10794,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1207849498}
   m_CullTransparentMesh: 1
+--- !u!114 &1207849503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207849498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d325a6d581b27494baee33ac936c1796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 27d1380a5551bc54b8762c1b84e4163c, type: 3}
 --- !u!1 &1238864304
 GameObject:
   m_ObjectHideFlags: 0
@@ -11712,6 +11764,7 @@ GameObject:
   - component: {fileID: 1564808860}
   - component: {fileID: 1564808859}
   - component: {fileID: 1564808858}
+  - component: {fileID: 1564808861}
   m_Layer: 5
   m_Name: ButtonSlow_
   m_TagString: Untagged
@@ -11784,7 +11837,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1564808859}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1564808861}
+        m_TargetAssemblyTypeName: LockedButton, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1564808859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11823,6 +11888,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1564808856}
   m_CullTransparentMesh: 1
+--- !u!114 &1564808861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564808856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d325a6d581b27494baee33ac936c1796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 27d1380a5551bc54b8762c1b84e4163c, type: 3}
 --- !u!1 &1571961348
 GameObject:
   m_ObjectHideFlags: 0
@@ -13116,6 +13194,7 @@ GameObject:
   - component: {fileID: 1788201694}
   - component: {fileID: 1788201693}
   - component: {fileID: 1788201692}
+  - component: {fileID: 1788201695}
   m_Layer: 5
   m_Name: ButtonPU_
   m_TagString: Untagged
@@ -13188,7 +13267,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1788201693}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1788201695}
+        m_TargetAssemblyTypeName: LockedButton, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1788201693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13227,6 +13318,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1788201690}
   m_CullTransparentMesh: 1
+--- !u!114 &1788201695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788201690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d325a6d581b27494baee33ac936c1796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 27d1380a5551bc54b8762c1b84e4163c, type: 3}
 --- !u!1 &1802462787
 GameObject:
   m_ObjectHideFlags: 0
