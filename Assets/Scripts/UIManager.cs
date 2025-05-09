@@ -35,7 +35,7 @@ public class UIManager : MonoBehaviour
         // Aggiorna il testo del punteggio e delle vite
         coinText.text = score.GetScore();
         lifeText.text = manager.GetLives().ToString();
-        scoreText.text = string.Format("Score: {0}", levelGenerator.GetScore());
+        scoreText.text = string.Format("{0}", levelGenerator.GetScore());
 
         // Mostra o nascondi le icone delle pozioni in base allo stato dei power-up
         potionHpIcon.gameObject.SetActive(manager.Get2());
