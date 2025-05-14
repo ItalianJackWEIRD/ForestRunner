@@ -58,14 +58,21 @@ public class Collision : MonoBehaviour
             {
                 shake.camShake();
                 Destroy(other.gameObject);
-                currentScore = scoreManager.GetScoreInt(); // Ottieni il punteggio corrente
-                GameOver(); // Passa il punteggio corrente al Game Over Manager
+                if (!manager.powerUp2)
+                {
+                    manager.LifeMinus1();
+                    currentScore = scoreManager.GetScoreInt(); // Ottieni il punteggio corrente
+                    GameOver(); // Passa il punteggio corrente al Game Over Manager
+                }
             }
             else
             {
-                manager.LifeMinus1();
                 shake.camShake();
                 Destroy(other.gameObject);
+                if (!manager.powerUp2)
+                {
+                    manager.LifeMinus1();
+                }
             }
         }
         else if (other.tag == "River" || other.tag == "DeathBarrier")

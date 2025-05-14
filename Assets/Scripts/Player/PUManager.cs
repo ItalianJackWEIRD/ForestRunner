@@ -11,7 +11,6 @@ public class PUManager : MonoBehaviour
     private Animator animator;
 
     public int PlayerLives;
-    private int PlayerLivesTemp;
 
     private Movement mov;
 
@@ -61,14 +60,15 @@ public class PUManager : MonoBehaviour
 
     public void LifeMinus1()
     {
-        PlayerLives--;
+        if (!powerUp2)
+            PlayerLives--;
         animator.SetTrigger("Hit");
     }
 
     public void LifePlus1()
     {
         PlayerLives++;
-        PlaySound(lifeSound);  
+        PlaySound(lifeSound);
     }
 
     public void Set2()
@@ -78,7 +78,6 @@ public class PUManager : MonoBehaviour
             StopCoroutine(Wait2());
         }
         powerUp2 = true;
-        PlayerLives = 99;
         PlaySound(powerUp2Sound);  // Riproduci il suono di PowerUp2
         StartCoroutine(Wait2());
     }
@@ -92,7 +91,6 @@ public class PUManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(secondsToWait);
         powerUp2 = false;
-        PlayerLives = PlayerLivesTemp;
     }
 
     public void Set3()

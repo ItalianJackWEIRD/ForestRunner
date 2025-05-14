@@ -35,13 +35,20 @@ public class Boxes : MonoBehaviour
             {
                 shake.camShake();
                 destroyBoxNoCoin();
-                ShowGameOver();
+                if (!manager.powerUp2)
+                {
+                    manager.LifeMinus1();
+                    ShowGameOver();
+                }
             }
             else
             {
-                manager.LifeMinus1();
                 shake.camShake();
                 destroyBoxNoCoin();
+                if (!manager.powerUp2)
+                {
+                    manager.LifeMinus1();
+                }
             }
         }
     }

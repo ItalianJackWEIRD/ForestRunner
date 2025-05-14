@@ -14,6 +14,15 @@ public class UIManager : MonoBehaviour
     public Image scoreX2;
     public Image slowSpeed;
 
+    public GameObject HP1;
+    public GameObject HP2;
+    public GameObject HP3;
+    public GameObject HP4;
+    public GameObject HP1_;
+    public GameObject HP2_;
+    public GameObject HP3_;
+    public GameObject HP4_;
+
     public Score score; // Associa questo campo con il componente Score del Player
     public PUManager manager; // Associa questo campo con il componente PUManager del Player
     public LevelGenerator levelGenerator; // Associa questo campo con il componente LevelGenerator del Player
@@ -39,7 +48,9 @@ public class UIManager : MonoBehaviour
             coinText.text = string.Format(" {0}", score.GetScore());
         else
             coinText.text = score.GetScore();
-        lifeText.text = manager.GetLives().ToString();
+
+        //lifeText.text = manager.GetLives().ToString();
+        ManageLives(manager.GetLives());
         scoreText.text = string.Format("{0}", levelGenerator.GetScore());
 
         // Mostra o nascondi le icone delle pozioni in base allo stato dei power-up
@@ -50,4 +61,25 @@ public class UIManager : MonoBehaviour
         scoreX2.gameObject.SetActive(levelGenerator.scoreX2);
         slowSpeed.gameObject.SetActive(levelGenerator.slowSpeed);
     }
+
+    void ManageLives(int lives)
+    {
+        GameObject[] hp = { HP1, HP2, HP3, HP4 };
+        GameObject[] hpAlt = { HP1_, HP2_, HP3_, HP4_ };
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (i < lives)
+            {
+                hp[i].SetActive(true);
+                hpAlt[i].SetActive(false);
+            }
+            else
+            {
+                hp[i].SetActive(false);
+                hpAlt[i].SetActive(true);
+            }
+        }
+    }
+
 }
