@@ -22,13 +22,13 @@ public class Score : MonoBehaviour
         PlayCollectSound();  // Riproduci il suono quando il punteggio aumenta
     }
 
-    public void ScorePlusFive() 
-    { 
+    public void ScorePlusFive()
+    {
         ScoreInt += 5;
         PlayCollectSound();  // Riproduci il suono quando il punteggio aumenta
     }
 
-    public string GetScore ()
+    public string GetScore()
     {
         return ScoreInt.ToString();
     }
@@ -36,6 +36,11 @@ public class Score : MonoBehaviour
     public int GetScoreInt()
     {
         return ScoreInt;
+    }
+
+    public void MenoInt(int score)
+    {
+        this.ScoreInt -= score;
     }
 
     private void PlayCollectSound()

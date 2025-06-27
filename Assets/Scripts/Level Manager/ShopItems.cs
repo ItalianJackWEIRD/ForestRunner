@@ -9,14 +9,18 @@ public class ShopItems : MonoBehaviour
     private PUManager manager; // Riferimento al PUManager
     private LevelGenerator levelGenerator; // Riferimento al LevelGenerator
 
+    private Score score; // Riferimento al componente Score, se necessario
+
     void Start()
     {
         manager = GameObject.FindGameObjectWithTag("Player").GetComponent<PUManager>();
         levelGenerator = GameObject.FindGameObjectWithTag("GameController").GetComponent<LevelGenerator>();
+        score = GameObject.FindGameObjectWithTag("Player").GetComponent<Score>();
     }
     public void buyLife()
     {
         manager.LifePlus1();
+        score.MenoInt(50); // Sottrae 50 punti dal punteggio
     }
 
     public void buyPoweUpRandom()
@@ -34,16 +38,19 @@ public class ShopItems : MonoBehaviour
                 manager.Set3(); // Attiva il terzo PowerUp
                 break;
         }
+        score.MenoInt(50);
     }
 
     public void buySlowSpeed()  //slow speed del gioco per 15 secondi
     {
         levelGenerator.StartCoroutine(levelGenerator.SlowSpeed());
+        score.MenoInt(100);
     }
 
     public void buyScoreX2()
     {
         levelGenerator.StartCoroutine(levelGenerator.ScoreX2());
+        score.MenoInt(200);
     }
 
 }

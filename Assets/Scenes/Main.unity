@@ -730,6 +730,7 @@ GameObject:
   - component: {fileID: 251663894}
   - component: {fileID: 251663893}
   - component: {fileID: 251663892}
+  - component: {fileID: 251663895}
   m_Layer: 5
   m_Name: ButtonSlow
   m_TagString: Untagged
@@ -803,7 +804,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 944308016}
+      - m_Target: {fileID: 251663895}
         m_TargetAssemblyTypeName: ShopItems, Assembly-CSharp
         m_MethodName: buySlowSpeed
         m_Mode: 1
@@ -853,6 +854,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251663890}
   m_CullTransparentMesh: 1
+--- !u!114 &251663895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251663890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 320f325e8cb2a864bbdae650e513ac92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &278157331
 GameObject:
   m_ObjectHideFlags: 0
@@ -3037,6 +3050,7 @@ GameObject:
   - component: {fileID: 627580451}
   - component: {fileID: 627580450}
   - component: {fileID: 627580449}
+  - component: {fileID: 627580452}
   m_Layer: 5
   m_Name: ButtonPU
   m_TagString: Untagged
@@ -3110,7 +3124,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 944308016}
+      - m_Target: {fileID: 627580452}
         m_TargetAssemblyTypeName: ShopItems, Assembly-CSharp
         m_MethodName: buyPoweUpRandom
         m_Mode: 1
@@ -3160,6 +3174,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 627580447}
   m_CullTransparentMesh: 1
+--- !u!114 &627580452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627580447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 320f325e8cb2a864bbdae650e513ac92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &641445782
 GameObject:
   m_ObjectHideFlags: 0
@@ -10252,6 +10278,7 @@ GameObject:
   - component: {fileID: 1081153126}
   - component: {fileID: 1081153125}
   - component: {fileID: 1081153124}
+  - component: {fileID: 1081153127}
   m_Layer: 5
   m_Name: ButtonLife
   m_TagString: Untagged
@@ -10325,7 +10352,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 944308016}
+      - m_Target: {fileID: 1081153127}
         m_TargetAssemblyTypeName: ShopItems, Assembly-CSharp
         m_MethodName: buyLife
         m_Mode: 1
@@ -10375,6 +10402,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081153122}
   m_CullTransparentMesh: 1
+--- !u!114 &1081153127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081153122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 320f325e8cb2a864bbdae650e513ac92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1089285541
 GameObject:
   m_ObjectHideFlags: 0
@@ -12928,6 +12967,7 @@ GameObject:
   - component: {fileID: 1672126161}
   - component: {fileID: 1672126160}
   - component: {fileID: 1672126159}
+  - component: {fileID: 1672126162}
   m_Layer: 5
   m_Name: ButtonX2
   m_TagString: Untagged
@@ -13001,7 +13041,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 944308016}
+      - m_Target: {fileID: 1672126162}
         m_TargetAssemblyTypeName: ShopItems, Assembly-CSharp
         m_MethodName: buyScoreX2
         m_Mode: 1
@@ -13051,6 +13091,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1672126157}
   m_CullTransparentMesh: 1
+--- !u!114 &1672126162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672126157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 320f325e8cb2a864bbdae650e513ac92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1687401812
 GameObject:
   m_ObjectHideFlags: 0
@@ -15051,7 +15103,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2101788043}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4ea86baf218f3640bd7574453c55d81, type: 3}
+  m_Script: {fileID: 11500000, guid: 320f325e8cb2a864bbdae650e513ac92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2101788057
