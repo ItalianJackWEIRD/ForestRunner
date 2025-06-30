@@ -158,7 +158,7 @@ public class LevelGenerator : MonoBehaviour
             Index += tileSpacing * 3; // Aggiorna l'indice per il prossimo batch
         }
 
-        if (CheckForShop(GetScore())) // Se il punteggio è 250 o 750 ecc ... genera shop
+        if (CheckForShop(GetScore())) // Se il punteggio è 250 o 500 o 750 ecc ... genera shop
         {
             shop1 = true;
         }
@@ -166,7 +166,7 @@ public class LevelGenerator : MonoBehaviour
 
     private bool CheckForShop(int score)
     {
-        if (score >= 250 && (score - 250) % 500 == 0)       // score >= 250 && (score - 250) % 500 == 0 "formula finale"
+        if (score == 50)       // score >= 250 && (score - 250) % 500 == 0 "formula finale"
         {
             return true;
         }
