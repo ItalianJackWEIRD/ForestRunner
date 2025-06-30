@@ -166,7 +166,7 @@ public class LevelGenerator : MonoBehaviour
 
     private bool CheckForShop(int score)
     {
-        if (score == 50)       // score >= 250 && (score - 250) % 500 == 0 "formula finale"
+        if (score >= 250 && (score - 250) % 500 == 0)       // score >= 250 && (score - 250) % 500 == 0 "formula finale"
         {
             return true;
         }

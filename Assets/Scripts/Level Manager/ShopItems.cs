@@ -76,12 +76,12 @@ public class ShopItems : MonoBehaviour
     public void buySlowSpeed()
     {
         levelGenerator.StartCoroutine(levelGenerator.SlowSpeed());
-        score.MenoInt(100);
+        score.MenoInt(200);
     }
 
     public void buyScoreX2()
     {
         levelGenerator.StartCoroutine(levelGenerator.ScoreX2());
-        score.MenoInt(200);
+        score.MenoInt(100);
     }
 }
