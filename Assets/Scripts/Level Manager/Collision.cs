@@ -40,14 +40,14 @@ public class Collision : MonoBehaviour
 {
     private PUManager manager;
     private Shake shake;
-    public Score scoreManager; // Aggiungi questa variabile per il punteggio
+    public LevelGenerator scoreManager; // Aggiungi questa variabile per il punteggio
     private int currentScore;
 
     private void Start()
     {
         manager = GameObject.FindGameObjectWithTag("Player").GetComponent<PUManager>();
         shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<Shake>();
-        scoreManager = GameObject.FindGameObjectWithTag("Player").GetComponent<Score>(); // Associa lo script Score
+        scoreManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<LevelGenerator>(); // Associa lo script LevelGenerator che ha lo score
     }
 
     private void OnTriggerEnter(Collider other)
@@ -61,7 +61,7 @@ public class Collision : MonoBehaviour
                 if (!manager.powerUp2)
                 {
                     manager.LifeMinus1();
-                    currentScore = scoreManager.GetScoreInt(); // Ottieni il punteggio corrente
+                    currentScore = scoreManager.GetScore(); // Ottieni il punteggio corrente
                     GameOver(); // Passa il punteggio corrente al Game Over Manager
                 }
             }
@@ -77,7 +77,7 @@ public class Collision : MonoBehaviour
         }
         else if (other.tag == "River" || other.tag == "DeathBarrier")
         {
-            currentScore = scoreManager.GetScoreInt(); // Ottieni il punteggio corrente
+            currentScore = scoreManager.GetScore(); // Ottieni il punteggio corrente
             GameOver(); // Passa il punteggio corrente al Game Over Manager
         }
     }

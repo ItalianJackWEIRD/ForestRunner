@@ -7,6 +7,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI coinText; // Associa questo campo con il TextMeshPro per il punteggio
     public TextMeshProUGUI lifeText; // Associa questo campo con il TextMeshPro per le vite
     public TextMeshProUGUI scoreText;
+
+    public TextMeshProUGUI bestScoreText;
     public Image potionHpIcon; // Associa questo campo con l'immagine dell'icona della pozione di HP
     public Image potionCoinIcon; // Associa questo campo con l'immagine dell'icona della pozione di monete
     public Image potionJumpIcon; // Associa questo campo con l'immagine dell'icona della pozione di salto
@@ -37,6 +39,8 @@ public class UIManager : MonoBehaviour
         slowSpeed.gameObject.SetActive(false);
 
         levelGenerator = GameObject.FindGameObjectWithTag("GameController").GetComponent<LevelGenerator>();
+
+        bestScoreText.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
     }
 
     void Update()
