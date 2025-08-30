@@ -8,6 +8,8 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject PausePanel;
 
+    public GameObject TutorialPanel;
+
     private void Start()
     {
 
@@ -35,5 +37,10 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("Main");
+    }
+
+    public void Tutorial()
+    {
+        TutorialPanel.SetActive(true);
     }
 }
